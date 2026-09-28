@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones - Laura Martínez</title>
+    <link rel="stylesheet" href="74_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="55_seccion.html" class="btn-regresar">←</a>
+        <h1>Calificaciones</h1>
+    </header>
+
+    <main>
+
+        <section class="perfil">
+            <div class="avatar">👩‍🎓</div>
+
+            <div>
+                <h2>Laura Martínez</h2>
+                <p>Grado 9° · Tecnología</p>
+            </div>
+        </section>
+
+        <h3>Tareas</h3>
+
+        <!-- ACTIVIDAD 1 -->
+        <div class="actividad calificada">
+
+            <div class="actividad-info">
+                <h4>Actividad 1</h4>
+                <p>Introducción a la tecnología</p>
+                <span>✓ Calificada</span>
+            </div>
+
+            <div class="nota">
+                <strong>4.7</strong>
+                <small>/ 5.0</small>
+            </div>
+
+        </div>
+
+        <!-- ACTIVIDAD 2 -->
+        <div class="actividad" id="actividad2">
+
+            <div class="actividad-info">
+                <h4>Actividad 2</h4>
+                <p>Investigación sobre tecnología</p>
+
+                <span id="estado2">
+                    ⏳ Pendiente de calificar
+                </span>
+            </div>
+
+            <div id="resultado2">
+
+                <a href="75_seccion.html" class="btn-calificar">
+                    Calificar
+                </a>
+
+            </div>
+
+        </div>
+
+        <!-- ACTIVIDAD 3 -->
+        <div class="actividad calificada">
+
+            <div class="actividad-info">
+                <h4>Actividad 3</h4>
+                <p>Proyecto tecnológico</p>
+                <span>✓ Calificada</span>
+            </div>
+
+            <div class="nota">
+                <strong>4.5</strong>
+                <small>/ 5.0</small>
+            </div>
+
+        </div>
+
+        <!-- PROMEDIO -->
+        <div class="promedio">
+
+            <p>Promedio</p>
+
+            <strong id="promedio">4.6</strong>
+
+            <span>/ 5.0</span>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+function cargarCalificacion() {
+
+    const datos = localStorage.getItem(
+        "calificacion_laura_actividad2"
+    );
+
+    if (datos) {
+
+        const calificacion = JSON.parse(datos);
+        const nota = parseFloat(calificacion.nota);
+
+        document.getElementById("estado2").textContent =
+            "✓ Calificada";
+
+        document.getElementById("estado2").style.color =
+            "#29965a";
+
+        document.getElementById("resultado2").innerHTML = `
+            <div class="nota">
+                <strong>${nota.toFixed(1)}</strong>
+                <small>/ 5.0</small>
+            </div>
+        `;
+
+        document.getElementById("actividad2").classList.add(
+            "calificada"
+        );
+
+        const promedio = (4.7 + nota + 4.5) / 3;
+
+        document.getElementById("promedio").textContent =
+            promedio.toFixed(1);
+    }
+}
+
+cargarCalificacion();
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calificaciones - Camila Rodríguez</title>
+
+    <link rel="stylesheet" href="121_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="106_seccion.html" class="boton-volver">←</a>
+        <h1>Calificaciones</h1>
+    </header>
+
+    <div class="perfil">
+
+        <div class="avatar">👩‍🎨</div>
+
+        <div>
+            <h2>Camila Rodríguez</h2>
+            <p>10° · Artística</p>
+        </div>
+
+    </div>
+
+    <main class="contenido">
+
+        <div class="promedio">
+            <span>Promedio</span>
+            <strong id="promedio">4.5</strong>
+        </div>
+
+        <h3>Actividades</h3>
+
+        <div class="actividad">
+
+            <div>
+                <strong>Actividad 1</strong>
+                <p>Ejercicio de dibujo</p>
+            </div>
+
+            <span class="nota">4.5</span>
+
+        </div>
+
+        <div class="actividad pendiente">
+
+            <div>
+                <strong>Actividad 2</strong>
+                <p>Proyecto artístico</p>
+
+                <small id="estado">
+                    Pendiente de calificar
+                </small>
+
+                <div id="comentarioContainer" class="comentario-container">
+
+                    <p>
+                        <strong>Comentario:</strong>
+                    </p>
+
+                    <p id="comentario"></p>
+
+                </div>
+
+            </div>
+
+            <div class="accion">
+
+                <span class="nota" id="notaActividad2">
+                    —
+                </span>
+
+                <a
+                    href="122_seccion.html"
+                    class="boton-calificar"
+                    id="botonCalificar">
+
+                    Calificar
+
+                </a>
+
+            </div>
+
+        </div>
+
+        <div class="actividad">
+
+            <div>
+                <strong>Actividad 3</strong>
+                <p>Composición artística</p>
+            </div>
+
+            <span class="nota">4.4</span>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+function actualizarCalificacion() {
+
+    const notaGuardada =
+        localStorage.getItem("calificacion_camila_actividad2");
+
+    const comentarioGuardado =
+        localStorage.getItem("comentario_camila_actividad2");
+
+    if (notaGuardada !== null) {
+
+        const nota = parseFloat(notaGuardada);
+
+        document.getElementById("notaActividad2").textContent =
+            nota.toFixed(1);
+
+        document.getElementById("estado").textContent =
+            "✓ Calificada";
+
+        document.getElementById("estado").classList.add("calificada");
+
+        document.getElementById("botonCalificar").style.display =
+            "none";
+
+        if (comentarioGuardado) {
+
+            document.getElementById("comentario").textContent =
+                comentarioGuardado;
+
+            document.getElementById("comentarioContainer").style.display =
+                "block";
+        }
+
+        const promedio =
+            (4.5 + nota + 4.4) / 3;
+
+        document.getElementById("promedio").textContent =
+            promedio.toFixed(1);
+    }
+}
+
+document.addEventListener(
+    "DOMContentLoaded",
+    actualizarCalificacion
+);
+
+</script>
+
+</body>
+
+</html>

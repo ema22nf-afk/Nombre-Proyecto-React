@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduConnect - Notificaciones</title>
+
+    <link rel="stylesheet" href="7_seccion.css">
+</head>
+
+<body>
+
+    <main class="telefono">
+
+        <!-- =========================
+             ENCABEZADO
+        ========================== -->
+
+        <header class="encabezado">
+
+            <!-- Botón para volver al menú -->
+
+            <a
+                href="5_seccion.html"
+                class="inicio"
+                title="Volver al menú"
+                aria-label="Volver al menú">
+                🏠
+            </a>
+
+
+            <!-- Título -->
+
+            <h1>Notificaciones</h1>
+
+        </header>
+
+
+        <!-- =========================
+             LISTA DE NOTIFICACIONES
+        ========================== -->
+
+        <section
+            class="lista"
+            id="listaNotificaciones">
+
+
+            <!-- =========================
+                 NOTIFICACIÓN 1
+            ========================== -->
+
+            <article
+                class="notificacion"
+                id="n1">
+
+                <h3>
+                    Nuevo mensaje
+                </h3>
+
+                <p>
+                    Tienes un nuevo mensaje en la
+                    materia de Artística sin leer.
+                </p>
+
+                <div class="botones">
+
+                    <button
+                        type="button"
+                        onclick="leer('n1')">
+
+                        Marcar como leída
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="eliminar"
+                        onclick="eliminar('n1')">
+
+                        Eliminar
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 NOTIFICACIÓN 2
+            ========================== -->
+
+            <article
+                class="notificacion"
+                id="n2">
+
+                <h3>
+                    Tarea no entregada
+                </h3>
+
+                <p>
+                    Tu tarea "Sombras" de Artística
+                    venció.
+                </p>
+
+                <div class="botones">
+
+                    <button
+                        type="button"
+                        onclick="leer('n2')">
+
+                        Marcar como leída
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="eliminar"
+                        onclick="eliminar('n2')">
+
+                        Eliminar
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 NOTIFICACIÓN 3
+            ========================== -->
+
+            <article
+                class="notificacion"
+                id="n3">
+
+                <h3>
+                    Recordatorio
+                </h3>
+
+                <p>
+                    Te quedan 2 días para entregar
+                    el delineado de Artística.
+                </p>
+
+                <div class="botones">
+
+                    <button
+                        type="button"
+                        onclick="leer('n3')">
+
+                        Marcar como leída
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="eliminar"
+                        onclick="eliminar('n3')">
+
+                        Eliminar
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 MENSAJE SIN NOTIFICACIONES
+            ========================== -->
+
+            <p
+                id="sinNotificaciones"
+                class="sin-notificaciones">
+
+                No tienes notificaciones.
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+
+        /* ==========================================
+           MARCAR COMO LEÍDA
+           
+           IMPORTANTE:
+           No utilizamos localStorage.
+           
+           Por eso el cambio solamente existe
+           durante la visita actual.
+        ========================================== */
+
+        function leer(id) {
+
+            const notificacion =
+                document.getElementById(id);
+
+
+            if (!notificacion) {
+                return;
+            }
+
+
+            /*
+                Agregamos la clase "leida".
+
+                Esto cambia solamente
+                el aspecto visual.
+            */
+
+            notificacion.classList.add(
+                "leida"
+            );
+
+        }
+
+
+        /* ==========================================
+           ELIMINAR NOTIFICACIÓN
+           
+           IMPORTANTE:
+           La notificación solamente se elimina
+           del HTML actual.
+           
+           NO se guarda el cambio.
+        ========================================== */
+
+        function eliminar(id) {
+
+            const notificacion =
+                document.getElementById(id);
+
+
+            if (!notificacion) {
+                return;
+            }
+
+
+            /*
+                Eliminar solamente de la pantalla.
+            */
+
+            notificacion.remove();
+
+
+            /*
+                Comprobar si ya no quedan
+                notificaciones.
+            */
+
+            comprobarLista();
+
+        }
+
+
+        /* ==========================================
+           COMPROBAR LISTA
+        ========================================== */
+
+        function comprobarLista() {
+
+            const lista =
+                document.getElementById(
+                    "listaNotificaciones"
+                );
+
+
+            const notificaciones =
+                lista.querySelectorAll(
+                    ".notificacion"
+                );
+
+
+            const mensaje =
+                document.getElementById(
+                    "sinNotificaciones"
+                );
+
+
+            if (
+                notificaciones.length === 0
+            ) {
+
+                mensaje.style.display =
+                    "block";
+
+            } else {
+
+                mensaje.style.display =
+                    "none";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

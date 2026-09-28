@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chat Química</title>
+
+    <link rel="stylesheet" href="30_seccion.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+
+        <a class="boton" href="28_seccion.html">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+
+        <h1>Chat Química</h1>
+
+        <a class="boton" href="5_seccion.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+    </header>
+
+
+    <!-- CONVERSACIÓN -->
+    <main class="chat" id="chat">
+
+        <div class="mensaje enviado">
+            Hola profesor, tengo una duda sobre la actividad.
+        </div>
+
+        <div class="mensaje recibido">
+            Claro, dime cuál es tu duda y con gusto te ayudo.
+        </div>
+
+        <div class="mensaje enviado">
+            ¿Cómo debo realizar el balanceo de ecuaciones?
+        </div>
+
+        <div class="mensaje recibido">
+            Primero debes identificar la cantidad de átomos de cada elemento y luego ajustar los coeficientes hasta que sean iguales en ambos lados.
+        </div>
+
+    </main>
+
+
+    <!-- BARRA PARA ENVIAR MENSAJES -->
+    <footer class="footer">
+
+        <button class="icono" type="button">
+            <i class="fa-solid fa-camera"></i>
+        </button>
+
+        <button class="icono" type="button">
+            <i class="fa-regular fa-image"></i>
+        </button>
+
+        <input
+            type="text"
+            id="mensaje"
+            placeholder="Escribe un mensaje...">
+
+        <button class="enviar" onclick="enviarMensaje()">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+function enviarMensaje(){
+
+    const input = document.getElementById("mensaje");
+    const texto = input.value.trim();
+
+    if(texto === ""){
+        return;
+    }
+
+    const chat = document.getElementById("chat");
+
+    const nuevoMensaje = document.createElement("div");
+
+    nuevoMensaje.classList.add("mensaje", "enviado");
+
+    nuevoMensaje.textContent = texto;
+
+    chat.appendChild(nuevoMensaje);
+
+    input.value = "";
+
+    chat.scrollTop = chat.scrollHeight;
+
+}
+
+
+/* ENVIAR TAMBIÉN CON ENTER */
+
+document.getElementById("mensaje").addEventListener("keypress", function(event){
+
+    if(event.key === "Enter"){
+        enviarMensaje();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduConnect - Notificaciones</title>
+
+    <link rel="stylesheet" href="47_seccion.css">
+</head>
+
+<body>
+
+    <main class="telefono">
+
+        <!-- =========================
+             ENCABEZADO
+        ========================== -->
+
+        <header class="encabezado">
+
+            <!-- Botón para volver al menú del profesor -->
+
+            <a
+                href="45_seccion.html"
+                class="inicio"
+                title="Volver al menú"
+                aria-label="Volver al menú">
+
+                🏠
+
+            </a>
+
+
+            <!-- Título -->
+
+            <h1>Notificaciones</h1>
+
+        </header>
+
+
+        <!-- =========================
+             LISTA DE NOTIFICACIONES
+        ========================== -->
+
+        <section
+            class="lista"
+            id="listaNotificaciones">
+
+
+            <!-- =========================
+                 NOTIFICACIÓN 1
+            ========================== -->
+
+            <article
+                class="notificacion"
+                id="n1">
+
+                <h3>
+                    Nueva entrega
+                </h3>
+
+                <p>
+                    Un estudiante entregó una nueva
+                    actividad de Artística.
+                </p>
+
+                <div class="botones">
+
+                    <button
+                        type="button"
+                        onclick="leer('n1')">
+
+                        Marcar como leída
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="eliminar"
+                        onclick="eliminar('n1')">
+
+                        Eliminar
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 NOTIFICACIÓN 2
+            ========================== -->
+
+            <article
+                class="notificacion"
+                id="n2">
+
+                <h3>
+                    Nuevo mensaje
+                </h3>
+
+                <p>
+                    Tienes un nuevo mensaje de un
+                    estudiante sin leer.
+                </p>
+
+                <div class="botones">
+
+                    <button
+                        type="button"
+                        onclick="leer('n2')">
+
+                        Marcar como leída
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="eliminar"
+                        onclick="eliminar('n2')">
+
+                        Eliminar
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 NOTIFICACIÓN 3
+            ========================== -->
+
+            <article
+                class="notificacion"
+                id="n3">
+
+                <h3>
+                    Actividad próxima a vencer
+                </h3>
+
+                <p>
+                    La actividad "Paisaje" de
+                    Artística vence en 2 días.
+                </p>
+
+                <div class="botones">
+
+                    <button
+                        type="button"
+                        onclick="leer('n3')">
+
+                        Marcar como leída
+
+                    </button>
+
+
+                    <button
+                        type="button"
+                        class="eliminar"
+                        onclick="eliminar('n3')">
+
+                        Eliminar
+
+                    </button>
+
+                </div>
+
+            </article>
+
+
+            <!-- =========================
+                 MENSAJE SIN NOTIFICACIONES
+            ========================== -->
+
+            <p
+                id="sinNotificaciones"
+                class="sin-notificaciones">
+
+                No tienes notificaciones.
+
+            </p>
+
+        </section>
+
+    </main>
+
+
+    <!-- =========================
+         JAVASCRIPT
+    ========================== -->
+
+    <script>
+
+        /* ==========================================
+           MARCAR COMO LEÍDA
+        ========================================== */
+
+        function leer(id) {
+
+            const notificacion =
+                document.getElementById(id);
+
+
+            if (!notificacion) {
+                return;
+            }
+
+
+            notificacion.classList.add(
+                "leida"
+            );
+
+        }
+
+
+        /* ==========================================
+           ELIMINAR NOTIFICACIÓN
+        ========================================== */
+
+        function eliminar(id) {
+
+            const notificacion =
+                document.getElementById(id);
+
+
+            if (!notificacion) {
+                return;
+            }
+
+
+            /* Eliminar solamente de la pantalla */
+
+            notificacion.remove();
+
+
+            /* Comprobar si quedan notificaciones */
+
+            comprobarLista();
+
+        }
+
+
+        /* ==========================================
+           COMPROBAR LISTA
+        ========================================== */
+
+        function comprobarLista() {
+
+            const lista =
+                document.getElementById(
+                    "listaNotificaciones"
+                );
+
+
+            const notificaciones =
+                lista.querySelectorAll(
+                    ".notificacion"
+                );
+
+
+            const mensaje =
+                document.getElementById(
+                    "sinNotificaciones"
+                );
+
+
+            if (
+                notificaciones.length === 0
+            ) {
+
+                mensaje.style.display =
+                    "block";
+
+            } else {
+
+                mensaje.style.display =
+                    "none";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Física</title>
+
+    <link rel="stylesheet" href="18_seccion.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <!-- ENCABEZADO -->
+
+    <header class="header">
+
+        <a class="boton" href="5_seccion.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+        <div class="buscador">
+            <input
+                type="text"
+                id="buscar"
+                placeholder="Física"
+            >
+
+            <button onclick="buscarMateria()">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+
+    <main class="contenido">
+
+        <img
+            src="https://cdn-icons-png.flaticon.com/512/2784/2784445.png"
+            class="imagen"
+            alt="Física"
+        >
+
+        <h1>Física</h1>
+
+        <input
+            type="text"
+            value="Profesor: Juan Pérez"
+            readonly
+        >
+
+        <input
+            type="text"
+            value="Código: FIS-101"
+            readonly
+        >
+
+        <a class="entrar" href="19_seccion.html">
+            Entrar a la materia
+        </a>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function buscarMateria(){
+
+    let materia = document.getElementById("buscar").value;
+
+    if(materia === ""){
+        alert("Escriba una materia.");
+    }else{
+        alert("Buscando: " + materia);
+    }
+
+}
+
+</script>
+
+</body>
+</html>

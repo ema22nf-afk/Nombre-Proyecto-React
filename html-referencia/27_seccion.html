@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Química</title>
+
+    <link rel="stylesheet" href="27_seccion.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+
+        <a class="boton" href="5_seccion.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+        <div class="buscador">
+            <input type="text" id="buscar" placeholder="Química">
+
+            <button onclick="buscarMateria()">
+                <i class="fa-solid fa-magnifying-glass"></i>
+            </button>
+        </div>
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+    <main class="contenido">
+
+        <!-- Icono de Química -->
+        <div class="imagen">
+            <i class="fa-solid fa-flask"></i>
+        </div>
+
+        <h1>Química</h1>
+
+        <div class="informacion">
+            <p>Profesor: Carlos Ramírez</p>
+        </div>
+
+        <div class="informacion">
+            <p>Código: QUI-101</p>
+        </div>
+
+        <a class="entrar-materia" href="28_seccion.html">
+            Entrar a la materia
+        </a>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function buscarMateria(){
+
+    let materia = document.getElementById("buscar").value;
+
+    if(materia.trim() === ""){
+        alert("Escribe una materia para buscar.");
+    }else{
+        alert("Buscando: " + materia);
+    }
+
+}
+
+</script>
+
+</body>
+</html>

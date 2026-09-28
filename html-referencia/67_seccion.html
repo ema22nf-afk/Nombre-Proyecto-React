@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - María Gómez</title>
+    <link rel="stylesheet" href="67_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="53_seccion.html" class="btn-regresar">←</a>
+        <h1>Chat</h1>
+    </header>
+
+    <div class="perfil-chat">
+
+        <div class="avatar">👩‍🎓</div>
+
+        <div>
+            <h2>María Gómez</h2>
+            <p>Grado 9° · Tecnología</p>
+        </div>
+
+    </div>
+
+
+    <main class="chat" id="chat">
+
+        <!-- MENSAJES DEL ESTUDIANTE -->
+
+        <div class="mensaje estudiante">
+            <p>Hola profesor, tengo una pregunta sobre la actividad.</p>
+            <span>10:17 a. m.</span>
+        </div>
+
+
+        <div class="mensaje estudiante">
+            <p>¿La investigación debe tener mínimo una página?</p>
+            <span>10:20 a. m.</span>
+        </div>
+
+
+        <!-- MENSAJE DEL PROFESOR -->
+
+        <div class="mensaje profesor">
+            <p>Sí, María. Recuerda también agregar las fuentes que consultaste.</p>
+            <span>10:22 a. m.</span>
+        </div>
+
+    </main>
+
+
+    <!-- ESCRIBIR MENSAJE -->
+
+    <div class="zona-escribir">
+
+        <input
+            type="text"
+            id="mensaje"
+            placeholder="Escribe un mensaje..."
+            onkeydown="if(event.key === 'Enter') enviarMensaje()"
+        >
+
+        <button onclick="enviarMensaje()">
+            ➤
+        </button>
+
+    </div>
+
+</div>
+
+
+<script>
+
+function enviarMensaje() {
+
+    const input = document.getElementById("mensaje");
+    const chat = document.getElementById("chat");
+
+    const texto = input.value.trim();
+
+    if (texto === "") {
+        return;
+    }
+
+
+    // Crear el mensaje
+
+    const nuevoMensaje = document.createElement("div");
+
+    nuevoMensaje.className = "mensaje profesor";
+
+
+    // Crear el texto de forma segura
+
+    const parrafo = document.createElement("p");
+
+    parrafo.textContent = texto;
+
+
+    // Crear la hora
+
+    const hora = document.createElement("span");
+
+    const ahora = new Date();
+
+    hora.textContent = ahora.toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+
+    // Agregar elementos al mensaje
+
+    nuevoMensaje.appendChild(parrafo);
+    nuevoMensaje.appendChild(hora);
+
+    chat.appendChild(nuevoMensaje);
+
+
+    // Limpiar campo
+
+    input.value = "";
+
+
+    // Bajar automáticamente al último mensaje
+
+    chat.scrollTop = chat.scrollHeight;
+
+}
+
+</script>
+
+</body>
+</html>

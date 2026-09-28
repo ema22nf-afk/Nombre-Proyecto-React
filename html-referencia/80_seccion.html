@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones - Valentina Torres</title>
+    <link rel="stylesheet" href="80_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="57_seccion.html" class="btn-regresar">←</a>
+        <h1>Calificaciones</h1>
+    </header>
+
+    <main>
+
+        <section class="perfil">
+            <div class="avatar">👩‍🎓</div>
+
+            <div>
+                <h2>Valentina Torres</h2>
+                <p>Grado 10° · Tecnología</p>
+            </div>
+        </section>
+
+        <section class="resumen">
+
+            <h2>Resumen académico</h2>
+
+            <div class="promedio">
+                <span>Promedio</span>
+                <strong id="promedio">4.4</strong>
+            </div>
+
+        </section>
+
+        <section class="actividades">
+
+            <div class="actividad">
+
+                <div>
+                    <h3>Actividad 1</h3>
+                    <p>Introducción a la tecnología</p>
+                </div>
+
+                <span class="nota">4.3</span>
+
+            </div>
+
+
+            <div class="actividad pendiente">
+
+                <div>
+                    <h3>Actividad 2</h3>
+
+                    <p>Investigación sobre tecnología</p>
+
+                    <span id="estado">
+                        Pendiente de calificar
+                    </span>
+
+                    <p id="comentario" class="comentario"></p>
+                </div>
+
+                <a href="81_seccion.html" class="btn-calificar">
+                    Calificar
+                </a>
+
+            </div>
+
+
+            <div class="actividad">
+
+                <div>
+                    <h3>Actividad 3</h3>
+                    <p>Proyecto tecnológico</p>
+                </div>
+
+                <span class="nota">4.5</span>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function cargarCalificacion() {
+
+    const datos = localStorage.getItem(
+        "calificacion_valentina_actividad2"
+    );
+
+    if (datos) {
+
+        const calificacion = JSON.parse(datos);
+
+        document.getElementById("estado").textContent =
+            "✓ Calificada: " + calificacion.nota;
+
+        document.getElementById("estado").className =
+            "calificada";
+
+        document.querySelector(".btn-calificar").style.display =
+            "none";
+
+        if (calificacion.comentario) {
+
+            document.getElementById("comentario").textContent =
+                "Comentario: " + calificacion.comentario;
+
+        }
+
+        const promedio =
+            (4.3 + calificacion.nota + 4.5) / 3;
+
+        document.getElementById("promedio").textContent =
+            promedio.toFixed(1);
+    }
+}
+
+cargarCalificacion();
+
+</script>
+
+</body>
+</html>

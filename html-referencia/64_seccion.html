@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EduConnect - Chat Juan Pérez</title>
+    <link rel="stylesheet" href="64_seccion.css">
+</head>
+<body>
+
+    <div class="telefono">
+
+        <header class="encabezado">
+            <a href="52_seccion.html" class="boton-casa">⌂</a>
+            <h1>Chat</h1>
+        </header>
+
+        <main class="contenido">
+
+            <div class="perfil-chat">
+                <div class="icono">👨‍🎓</div>
+                <h2>Juan Pérez</h2>
+                <p>Grado 9° · Tecnología</p>
+            </div>
+
+            <div class="chat">
+
+                <div class="mensaje estudiante">
+                    <p>Hola profesor, tengo una pregunta sobre la actividad.</p>
+                    <span>10:15 a. m.</span>
+                </div>
+
+                <div class="mensaje profesor">
+                    <p>Hola Juan. Claro, dime cuál es tu pregunta.</p>
+                    <span>10:17 a. m.</span>
+                </div>
+
+                <div class="mensaje estudiante">
+                    <p>No entendí una parte de las instrucciones.</p>
+                    <span>10:18 a. m.</span>
+                </div>
+
+            </div>
+
+        </main>
+
+        <div class="entrada">
+            <input type="text" id="mensaje" placeholder="Escribe un mensaje...">
+            <button onclick="enviarMensaje()">➤</button>
+        </div>
+
+    </div>
+
+    <script>
+        function enviarMensaje() {
+            const input = document.getElementById("mensaje");
+            const texto = input.value.trim();
+
+            if (texto === "") {
+                return;
+            }
+
+            const chat = document.querySelector(".chat");
+
+            const mensaje = document.createElement("div");
+            mensaje.className = "mensaje profesor";
+
+            mensaje.innerHTML = `
+                <p>${texto}</p>
+                <span>Ahora</span>
+            `;
+
+            chat.appendChild(mensaje);
+
+            input.value = "";
+
+            document.querySelector(".contenido").scrollTop =
+                document.querySelector(".contenido").scrollHeight;
+        }
+    </script>
+
+</body>
+</html>

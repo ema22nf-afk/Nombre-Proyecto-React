@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificar actividad - Camila Rodríguez</title>
+    <link rel="stylesheet" href="87_seccion.css">
+</head>
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="86_seccion.html" class="boton-volver">←</a>
+        <h1>Calificar actividad</h1>
+    </header>
+
+    <main class="contenido">
+
+        <div class="perfil">
+            <div class="avatar">👩‍🎓</div>
+            <div>
+                <h2>Camila Rodríguez</h2>
+                <p>10° · Tecnología</p>
+            </div>
+        </div>
+
+        <section class="actividad">
+            <h2>Actividad 2</h2>
+            <h3>Investigación sobre tecnología</h3>
+
+            <p class="descripcion">
+                Investigación sobre una tecnología de interés, explicando
+                su funcionamiento, características y algunos ejemplos.
+            </p>
+
+            <div class="archivo">
+                📎 Investigación_tecnologia.pdf
+            </div>
+        </section>
+
+        <section class="calificacion">
+
+            <label for="nota">Calificación</label>
+
+            <input
+                type="number"
+                id="nota"
+                min="0"
+                max="5"
+                step="0.1"
+                placeholder="Ej: 4.5"
+            >
+
+            <label for="comentario">Comentario del profesor</label>
+
+            <textarea
+                id="comentario"
+                placeholder="Escribe un comentario sobre la actividad..."
+            ></textarea>
+
+            <button onclick="guardarCalificacion()">
+                Guardar calificación
+            </button>
+
+            <p id="mensaje"></p>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+function guardarCalificacion() {
+
+    const nota = parseFloat(document.getElementById("nota").value);
+    const comentario = document.getElementById("comentario").value.trim();
+    const mensaje = document.getElementById("mensaje");
+
+    if (isNaN(nota) || nota < 0 || nota > 5) {
+        mensaje.textContent =
+            "Ingresa una calificación válida entre 0 y 5.";
+        mensaje.className = "error";
+        return;
+    }
+
+    if (comentario === "") {
+        mensaje.textContent =
+            "Escribe un comentario antes de guardar.";
+        mensaje.className = "error";
+        return;
+    }
+
+    const calificacion = {
+        nota: nota,
+        comentario: comentario
+    };
+
+    localStorage.setItem(
+        "calificacion_camila_actividad2",
+        JSON.stringify(calificacion)
+    );
+
+    mensaje.textContent =
+        "✓ Calificación guardada correctamente.";
+    mensaje.className = "exito";
+
+    setTimeout(() => {
+        window.location.href = "86_seccion.html";
+    }, 1000);
+}
+</script>
+
+</body>
+</html>

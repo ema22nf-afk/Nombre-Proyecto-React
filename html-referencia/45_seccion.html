@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduConnect - Menú Principal Profesor</title>
+
+    <link rel="stylesheet" href="45_seccion.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+    <main class="telefono">
+
+        <!-- =========================
+             ENCABEZADO
+        ========================== -->
+
+        <header class="header">
+
+            <div class="botones-superiores">
+
+                <!-- PERFIL -->
+                <a href="46_seccion.html" class="boton-icono">
+                    <i class="fa-solid fa-user"></i>
+                </a>
+
+                <!-- NOTIFICACIONES -->
+                <a href="47_seccion.html" class="boton-icono">
+                    <i class="fa-solid fa-bell"></i>
+                </a>
+
+            </div>
+
+            <h1>Menú Principal</h1>
+
+        </header>
+
+
+        <!-- =========================
+             CONTENIDO
+        ========================== -->
+
+        <section class="contenido">
+
+            <h2>Tus Materias</h2>
+
+
+            <!-- =========================
+                 TECNOLOGÍA
+            ========================== -->
+
+            <a href="48_seccion.html" class="materia">
+
+                <div class="imagen-materia">
+
+                    <i class="fa-solid fa-laptop-code"></i>
+
+                </div>
+
+                <span>Tecnología</span>
+
+            </a>
+
+
+            <!-- =========================
+                 ARTÍSTICA
+            ========================== -->
+
+            <a href="100_seccion.html" class="materia">
+
+                <div class="imagen-materia artistica">
+
+                    <i class="fa-solid fa-palette"></i>
+
+                </div>
+
+                <span>Artística</span>
+
+            </a>
+
+
+            <!-- =========================
+                 AGREGAR MATERIA
+            ========================== -->
+
+            <a href="135_seccion.html" class="agregar-materia">
+
+                <i class="fa-solid fa-plus"></i>
+
+                <span>Agregar materia</span>
+
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* =========================================
+           CLAVE DE LAS MATERIAS TEMPORALES
+        ========================================= */
+
+        const CLAVE_MATERIAS =
+            "educonnect_materias_profesor_temporales";
+
+
+        /* =========================================
+           DETECTAR SI LA PÁGINA FUE REFRESCADA
+        ========================================= */
+
+        const navegacion =
+            performance.getEntriesByType("navigation")[0];
+
+
+        if (
+            navegacion &&
+            navegacion.type === "reload"
+        ) {
+
+            sessionStorage.removeItem(
+                CLAVE_MATERIAS
+            );
+
+        }
+
+
+        /* =========================================
+           CARGAR MATERIAS CREADAS
+        ========================================= */
+
+        function cargarMaterias() {
+
+            const materias =
+                JSON.parse(
+                    sessionStorage.getItem(
+                        CLAVE_MATERIAS
+                    )
+                ) || [];
+
+
+            const contenido =
+                document.querySelector(".contenido");
+
+
+            const botonAgregar =
+                document.querySelector(".agregar-materia");
+
+
+            materias.forEach(function(materia) {
+
+
+                /* =========================
+                   CREAR TARJETA
+                ========================== */
+
+                const tarjeta =
+                    document.createElement("a");
+
+
+                tarjeta.className =
+                    "materia materia-creada";
+
+
+                tarjeta.href = "#";
+
+
+                /* =========================
+                   IMAGEN / ICONO
+                ========================== */
+
+                const imagen =
+                    document.createElement("div");
+
+
+                imagen.className =
+                    "imagen-materia";
+
+
+                imagen.textContent =
+                    materia.icono;
+
+
+                /* =========================
+                   NOMBRE
+                ========================== */
+
+                const nombre =
+                    document.createElement("span");
+
+
+                nombre.textContent =
+                    materia.nombre;
+
+
+                /* =========================
+                   INFORMACIÓN
+                ========================== */
+
+                const informacion =
+                    document.createElement("small");
+
+
+                informacion.textContent =
+                    "Código: " + materia.codigo;
+
+
+                /* =========================
+                   AGREGAR ELEMENTOS
+                ========================== */
+
+                tarjeta.appendChild(imagen);
+
+                tarjeta.appendChild(nombre);
+
+                tarjeta.appendChild(informacion);
+
+
+                /* =========================
+                   INSERTAR ANTES DE
+                   "AGREGAR MATERIA"
+                ========================== */
+
+                contenido.insertBefore(
+                    tarjeta,
+                    botonAgregar
+                );
+
+            });
+
+        }
+
+
+        /* =========================================
+           CARGAR AL ABRIR
+        ========================================= */
+
+        cargarMaterias();
+
+    </script>
+
+</body>
+
+</html>

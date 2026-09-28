@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - Sebastián Gómez</title>
+    <link rel="stylesheet" href="82_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="58_seccion.html" class="btn-regresar">←</a>
+        <h1>Chat</h1>
+    </header>
+
+    <main>
+
+        <section class="perfil">
+            <div class="avatar">👨‍🎓</div>
+
+            <div>
+                <h2>Sebastián Gómez</h2>
+                <p>Grado 10° · Tecnología</p>
+            </div>
+        </section>
+
+        <section class="chat">
+
+            <div class="mensaje estudiante">
+                <p>Hola profesor, tengo una duda sobre la actividad.</p>
+                <span>11:05 a. m.</span>
+            </div>
+
+            <div class="mensaje profesor">
+                <p>Hola, Sebastián. Claro, dime cuál es tu duda.</p>
+                <span>11:07 a. m.</span>
+            </div>
+
+            <div class="mensaje estudiante">
+                <p>¿La investigación debe incluir imágenes?</p>
+                <span>11:09 a. m.</span>
+            </div>
+
+            <div class="mensaje profesor">
+                <p>Sí, puedes agregar imágenes para complementar la información.</p>
+                <span>11:11 a. m.</span>
+            </div>
+
+        </section>
+
+        <div class="escribir">
+
+            <input
+                type="text"
+                id="mensaje"
+                placeholder="Escribe un mensaje..."
+            >
+
+            <button onclick="enviarMensaje()">➤</button>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+function enviarMensaje() {
+
+    const input = document.getElementById("mensaje");
+    const texto = input.value.trim();
+
+    if (texto === "") {
+        return;
+    }
+
+    const chat = document.querySelector(".chat");
+
+    const nuevoMensaje = document.createElement("div");
+    nuevoMensaje.className = "mensaje profesor";
+
+    const contenido = document.createElement("p");
+    contenido.textContent = texto;
+
+    const hora = document.createElement("span");
+
+    hora.textContent = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+    nuevoMensaje.appendChild(contenido);
+    nuevoMensaje.appendChild(hora);
+
+    chat.appendChild(nuevoMensaje);
+
+    input.value = "";
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+document.getElementById("mensaje").addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        enviarMensaje();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

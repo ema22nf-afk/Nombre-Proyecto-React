@@ -1,0 +1,321 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+
+    box-sizing: border-box;
+
+    margin: 0;
+
+    padding: 0;
+
+    font-family: Arial, sans-serif;
+
+}
+
+
+/* =========================================
+   FONDO GENERAL
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172234,
+            #3b78b8
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+}
+
+
+/* =========================================
+   TELÉFONO
+========================================= */
+
+.telefono {
+
+    width: 380px;
+
+    height: 720px;
+
+    background: #fffef5;
+
+    border-radius: 45px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.25);
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+.encabezado {
+
+    height: 85px;
+
+    min-height: 85px;
+
+    flex-shrink: 0;
+
+    background: #dcecff;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    position: relative;
+
+}
+
+
+.encabezado h1 {
+
+    color: #202d3d;
+
+    font-size: 24px;
+
+}
+
+
+/* =========================================
+   BOTÓN CASA
+========================================= */
+
+.boton-casa {
+
+    position: absolute;
+
+    left: 20px;
+
+    text-decoration: none;
+
+    color: #202d3d;
+
+    font-size: 32px;
+
+    line-height: 1;
+
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.contenido {
+
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 30px 25px;
+
+}
+
+
+/* =========================================
+   PERFIL DEL ESTUDIANTE
+========================================= */
+
+.perfil-estudiante {
+
+    background: white;
+
+    border-radius: 20px;
+
+    padding: 25px 20px;
+
+    text-align: center;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.12);
+
+    margin-bottom: 30px;
+
+}
+
+
+.icono-estudiante {
+
+    font-size: 65px;
+
+    margin-bottom: 10px;
+
+}
+
+
+.perfil-estudiante h2 {
+
+    color: #202d3d;
+
+    font-size: 23px;
+
+    margin-bottom: 15px;
+
+}
+
+
+.perfil-estudiante p {
+
+    color: #555;
+
+    margin: 7px 0;
+
+    font-size: 15px;
+
+}
+
+
+/* =========================================
+   TÍTULO OPCIONES
+========================================= */
+
+.contenido h3 {
+
+    color: #202d3d;
+
+    font-size: 20px;
+
+    margin-bottom: 15px;
+
+}
+
+
+/* =========================================
+   OPCIONES
+========================================= */
+
+.opcion {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    background: white;
+
+    text-decoration: none;
+
+    color: #202d3d;
+
+    padding: 18px;
+
+    margin-bottom: 15px;
+
+    border-radius: 18px;
+
+    box-shadow:
+        0 4px 12px
+        rgba(0, 0, 0, 0.12);
+
+    transition:
+        transform 0.2s,
+        box-shadow 0.2s;
+
+}
+
+
+.opcion:hover {
+
+    transform:
+        translateY(-2px);
+
+    box-shadow:
+        0 6px 15px
+        rgba(0, 0, 0, 0.18);
+
+}
+
+
+.emoji {
+
+    font-size: 32px;
+
+}
+
+
+.opcion div {
+
+    flex: 1;
+
+}
+
+
+.opcion strong {
+
+    font-size: 17px;
+
+}
+
+
+.opcion p {
+
+    color: #666;
+
+    font-size: 13px;
+
+    margin-top: 5px;
+
+}
+
+
+.flecha {
+
+    font-size: 30px;
+
+    color: #3b78b8;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 450px) {
+
+    body {
+
+        padding: 0;
+
+    }
+
+
+    .telefono {
+
+        width: 100%;
+
+        height: 100vh;
+
+        border-radius: 0;
+
+    }
+
+}

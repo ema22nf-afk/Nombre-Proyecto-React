@@ -1,0 +1,429 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+/* =========================================
+   FONDO
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172234,
+            #3b78b8
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+
+/* =========================================
+   TELÉFONO
+========================================= */
+
+.telefono {
+
+    width: 380px;
+
+    height: 720px;
+
+    background: #fffef5;
+
+    border-radius: 45px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+}
+
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+.header {
+
+    width: 100%;
+
+    height: 85px;
+
+    background: #dcecff;
+
+    padding:
+        18px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.header h1 {
+
+    flex: 1;
+
+    text-align: center;
+
+    font-size: 30px;
+
+    color: #202d3d;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   BOTONES DEL ENCABEZADO
+========================================= */
+
+.btn-header {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    background: #55b8ff;
+
+    color: #0b3475;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    font-size: 27px;
+
+    font-weight: bold;
+
+    transition: 0.2s;
+
+}
+
+
+.btn-header:hover {
+
+    background: #2196f3;
+
+    color: white;
+
+    transform: scale(1.05);
+
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.contenido {
+
+    padding:
+        25px 20px;
+
+    text-align: center;
+
+}
+
+
+/* =========================================
+   TÍTULO DE LA TAREA
+========================================= */
+
+.contenido h2 {
+
+    font-size: 30px;
+
+    color: #202d3d;
+
+    margin-bottom: 12px;
+
+}
+
+
+/* =========================================
+   FECHA
+========================================= */
+
+.fecha {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 6px;
+
+    margin-bottom: 18px;
+
+    font-size: 16px;
+
+}
+
+
+.fecha strong {
+
+    color: #202d3d;
+
+}
+
+
+.fecha span {
+
+    color: #e53935;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   IMAGEN
+========================================= */
+
+.imagen {
+
+    width: 100%;
+
+    height: 220px;
+
+    object-fit: cover;
+
+    border-radius: 12px;
+
+    display: block;
+
+    box-shadow:
+        0 4px 10px
+        rgba(
+            0,
+            0,
+            0,
+            0.15
+        );
+
+}
+
+
+/* =========================================
+   DESCRIPCIÓN
+========================================= */
+
+.descripcion {
+
+    margin-top: 18px;
+
+    padding: 15px;
+
+    background: white;
+
+    border:
+        2px solid #d8d8d8;
+
+    border-radius: 10px;
+
+    text-align: left;
+
+}
+
+
+.descripcion h3 {
+
+    font-size: 19px;
+
+    color: #202d3d;
+
+    margin-bottom: 8px;
+
+}
+
+
+.descripcion p {
+
+    font-size: 15px;
+
+    line-height: 21px;
+
+    color: #555;
+
+}
+
+
+/* =========================================
+   BOTONES
+========================================= */
+
+.botones {
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 35px;
+
+    margin-top: 25px;
+
+}
+
+
+/* =========================================
+   ACEPTAR / ENTREGAR
+========================================= */
+
+.aceptar,
+.cancelar {
+
+    width: 65px;
+
+    height: 65px;
+
+    border-radius: 12px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    font-size: 38px;
+
+    font-weight: bold;
+
+    color: white;
+
+    transition:
+        transform 0.2s,
+        filter 0.2s;
+
+}
+
+
+/* VERDE */
+
+.aceptar {
+
+    background: #28a745;
+
+}
+
+
+/* ROJO */
+
+.cancelar {
+
+    background: #dc3545;
+
+}
+
+
+/* HOVER */
+
+.aceptar:hover,
+.cancelar:hover {
+
+    transform: scale(1.08);
+
+    filter: brightness(0.95);
+
+}
+
+
+/* CLICK */
+
+.aceptar:active,
+.cancelar:active {
+
+    transform: scale(0.95);
+
+}
+
+
+/* =========================================
+   TEXTO DE AYUDA
+========================================= */
+
+.ayuda {
+
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    color: #777;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 450px) {
+
+    body {
+
+        padding: 0;
+
+    }
+
+
+    .telefono {
+
+        width: 100%;
+
+        height: 100vh;
+
+        border-radius: 0;
+
+    }
+
+}

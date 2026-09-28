@@ -1,0 +1,357 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+/* =========================================
+   FONDO GENERAL
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172234,
+            #3b78b8
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+
+/* =========================================
+   TELÉFONO
+========================================= */
+
+.telefono {
+
+    width: 380px;
+
+    height: 720px;
+
+    background: #fffef5;
+
+    border-radius: 45px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.25);
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+.header {
+
+    width: 100%;
+
+    height: 85px;
+
+    background: #dcecff;
+
+    padding:
+        18px 15px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+}
+
+
+/* =========================================
+   BOTONES DEL ENCABEZADO
+========================================= */
+
+.btn-header {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #55b8ff;
+
+    color: #0b3475;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    transition: 0.2s;
+
+}
+
+
+.btn-header:hover {
+
+    background: #2196f3;
+
+    color: white;
+
+    transform: scale(1.05);
+
+}
+
+
+.btn-header:active {
+
+    transform: scale(0.95);
+
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+.header h1 {
+
+    flex: 1;
+
+    text-align: center;
+
+    font-size: 28px;
+
+    color: #202d3d;
+
+    font-weight: bold;
+
+    padding: 0 10px;
+
+}
+
+
+/* =========================================
+   MENÚ DE OPCIONES
+========================================= */
+
+.menu {
+
+    flex: 1;
+
+    padding: 35px 20px;
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 35px;
+
+}
+
+
+/* =========================================
+   OPCIÓN
+========================================= */
+
+.opcion {
+
+    width: 100%;
+
+    min-height: 125px;
+
+    display: flex;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    color: #202d3d;
+
+    border-radius: 12px;
+
+    padding: 5px;
+
+    transition: background 0.2s;
+
+}
+
+
+.opcion:hover {
+
+    background:
+        rgba(
+            220,
+            236,
+            255,
+            0.5
+        );
+
+}
+
+
+/* =========================================
+   ICONO DE LA OPCIÓN
+========================================= */
+
+.icono-opcion {
+
+    width: 115px;
+
+    height: 115px;
+
+    flex-shrink: 0;
+
+    background: #bfeeff;
+
+    border:
+        3px solid #59c8ff;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 55px;
+
+    color: #4b79c7;
+
+    margin-right: 18px;
+
+    transition:
+        background 0.3s,
+        transform 0.3s;
+
+}
+
+
+.opcion:hover .icono-opcion {
+
+    background: #8edfff;
+
+    transform: scale(1.04);
+
+}
+
+
+/* =========================================
+   TEXTO
+========================================= */
+
+.texto-opcion {
+
+    flex: 1;
+
+}
+
+
+.texto-opcion h2 {
+
+    font-size: 20px;
+
+    line-height: 27px;
+
+    font-weight: bold;
+
+}
+
+
+.opcion:hover .texto-opcion {
+
+    color: #3b6fc6;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 450px) {
+
+    body {
+
+        padding: 0;
+
+    }
+
+
+    .telefono {
+
+        width: 100%;
+
+        height: 100vh;
+
+        border-radius: 0;
+
+    }
+
+
+    .menu {
+
+        padding:
+            30px 15px;
+
+    }
+
+
+    .icono-opcion {
+
+        width: 105px;
+
+        height: 105px;
+
+        font-size: 50px;
+
+        margin-right: 15px;
+
+    }
+
+
+    .texto-opcion h2 {
+
+        font-size: 18px;
+
+        line-height: 25px;
+
+    }
+
+}

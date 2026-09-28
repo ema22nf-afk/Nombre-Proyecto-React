@@ -1,0 +1,140 @@
+/* =========================
+   ESTILOS GENERALES
+========================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172234,
+            #3b78b8
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+.telefono{
+    width:390px;
+    height:780px;
+    background:#fff;
+    border-radius:35px;
+    overflow:hidden;
+    box-shadow:0 10px 25px rgba(0,0,0,.35);
+}
+
+/* =========================
+        ENCABEZADO
+========================= */
+
+.header{
+    height:100px;
+    background:#dcecf8;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:18px;
+}
+
+.header h1{
+    font-size:32px;
+    color:#000;
+    font-weight:bold;
+}
+
+/* BOTONES DEL ENCABEZADO */
+
+.boton{
+    width:55px;
+    height:55px;
+    background:#55c5ff;
+    color:#0b3475;
+    border-radius:8px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    text-decoration:none;
+    font-size:28px;
+
+    transition:.3s;
+}
+
+.boton:hover{
+    background:#2daeff;
+    transform:scale(1.05);
+}
+
+/* =========================
+          OPCIONES
+========================= */
+
+.menu{
+    padding:30px 20px;
+}
+
+.opcion{
+    display:flex;
+    align-items:center;
+
+    text-decoration:none;
+    color:#000;
+
+    margin-bottom:35px;
+}
+
+.icono-opcion{
+    width:120px;
+    height:120px;
+
+    background:#bfeeff;
+    border:3px solid #59c8ff;
+    border-radius:10px;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    font-size:60px;
+    color:#4b79c7;
+
+    margin-right:20px;
+
+    transition:.3s;
+}
+
+.texto-opcion{
+    flex:1;
+}
+
+.texto-opcion h2{
+    font-size:22px;
+    line-height:30px;
+    font-weight:bold;
+}
+
+.opcion:hover .icono-opcion{
+    background:#8edfff;
+    transform:scale(1.05);
+}
+
+.opcion:hover .texto-opcion{
+    color:#3b6fc6;
+}

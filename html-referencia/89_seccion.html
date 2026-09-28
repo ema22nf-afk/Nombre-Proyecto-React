@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones - Valeria Gallego</title>
+    <link rel="stylesheet" href="89_seccion.css">
+</head>
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="60_seccion.html" class="boton-volver">←</a>
+        <h1>Calificaciones</h1>
+    </header>
+
+    <main class="contenido">
+
+        <div class="perfil">
+            <div class="avatar">👩‍🎓</div>
+            <div>
+                <h2>Valeria Gallego</h2>
+                <p>11° · Tecnología</p>
+            </div>
+        </div>
+
+        <section class="actividad">
+            <div>
+                <h3>Actividad 1</h3>
+                <p>Introducción a la tecnología</p>
+            </div>
+            <strong>4.5</strong>
+        </section>
+
+        <section class="actividad">
+            <div>
+                <h3>Actividad 2</h3>
+                <p>Investigación sobre tecnología</p>
+                <span id="estado2">Pendiente de calificación</span>
+                <p id="comentario2" class="comentario"></p>
+            </div>
+
+            <div class="accion">
+                <strong id="nota2">—</strong>
+                <a id="botonCalificar" href="90_seccion.html">Calificar</a>
+            </div>
+        </section>
+
+        <section class="actividad">
+            <div>
+                <h3>Actividad 3</h3>
+                <p>Proyecto tecnológico</p>
+            </div>
+            <strong>4.7</strong>
+        </section>
+
+        <div class="promedio">
+            <span>Promedio</span>
+            <strong id="promedio">4.6</strong>
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+function cargarCalificacion() {
+
+    const datos = localStorage.getItem(
+        "calificacion_valeria_actividad2"
+    );
+
+    if (datos) {
+
+        const calificacion = JSON.parse(datos);
+
+        document.getElementById("estado2").textContent = "✓ Calificada";
+
+        document.getElementById("nota2").textContent =
+            Number(calificacion.nota).toFixed(1);
+
+        document.getElementById("comentario2").textContent =
+            "Comentario: " + calificacion.comentario;
+
+        document.getElementById("botonCalificar").style.display = "none";
+
+        const promedio =
+            (4.5 + Number(calificacion.nota) + 4.7) / 3;
+
+        document.getElementById("promedio").textContent =
+            promedio.toFixed(1);
+    }
+}
+
+cargarCalificacion();
+</script>
+
+</body>
+</html>

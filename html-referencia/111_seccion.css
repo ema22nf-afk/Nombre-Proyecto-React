@@ -1,0 +1,263 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    min-height: 100vh;
+
+    background: linear-gradient(135deg, #172234, #3b78b8);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    font-family: Arial, sans-serif;
+}
+
+.telefono {
+    width: 380px;
+    height: 720px;
+
+    background: #fffef5;
+
+    border-radius: 45px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+
+    display: flex;
+    flex-direction: column;
+}
+
+header {
+    min-height: 85px;
+    flex-shrink: 0;
+
+    background: #dcecff;
+
+    display: flex;
+    align-items: center;
+
+    position: relative;
+}
+
+header h1 {
+    width: 100%;
+
+    text-align: center;
+
+    color: #202d3d;
+
+    font-size: 24px;
+}
+
+.boton-volver {
+    position: absolute;
+
+    left: 20px;
+
+    width: 45px;
+    height: 45px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+
+    border-radius: 50%;
+
+    color: #202d3d;
+
+    font-size: 28px;
+
+    text-decoration: none;
+
+    box-shadow: 0 3px 8px rgba(0, 0, 0, .15);
+
+    transition: .2s;
+}
+
+.boton-volver:hover {
+    transform: scale(1.08);
+}
+
+.perfil {
+    flex-shrink: 0;
+
+    display: flex;
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 15px 20px;
+
+    background: #f1f7ff;
+
+    border-bottom: 1px solid #d9e6f5;
+}
+
+.avatar {
+    width: 50px;
+    height: 50px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    background: white;
+
+    border-radius: 50%;
+
+    font-size: 30px;
+}
+
+.perfil h2 {
+    color: #202d3d;
+
+    font-size: 18px;
+
+    margin-bottom: 4px;
+}
+
+.perfil p {
+    color: #666;
+
+    font-size: 14px;
+}
+
+.chat {
+    flex: 1;
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 20px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+.mensaje {
+    max-width: 82%;
+
+    padding: 12px 15px;
+
+    border-radius: 17px;
+
+    box-shadow: 0 2px 6px rgba(0, 0, 0, .08);
+}
+
+.mensaje p {
+    font-size: 14px;
+
+    line-height: 1.4;
+}
+
+.mensaje span {
+    display: block;
+
+    font-size: 11px;
+
+    margin-top: 5px;
+
+    opacity: .7;
+}
+
+.mensaje.estudiante {
+    align-self: flex-start;
+
+    background: #e7f0fa;
+
+    color: #202d3d;
+
+    border-bottom-left-radius: 5px;
+}
+
+.mensaje.profesor {
+    align-self: flex-end;
+
+    background: #dcecff;
+
+    color: #202d3d;
+
+    border-bottom-right-radius: 5px;
+}
+
+.escribir {
+    min-height: 70px;
+    flex-shrink: 0;
+
+    background: white;
+
+    border-top: 1px solid #d9e6f5;
+
+    padding: 12px 15px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 10px;
+}
+
+.escribir input {
+    flex: 1;
+
+    height: 45px;
+
+    border: 1px solid #cbd9e8;
+
+    border-radius: 22px;
+
+    padding: 0 17px;
+
+    outline: none;
+
+    font-size: 14px;
+}
+
+.escribir input:focus {
+    border-color: #3b78b8;
+}
+
+.escribir button {
+    width: 45px;
+    height: 45px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #3b78b8;
+
+    color: white;
+
+    font-size: 20px;
+
+    cursor: pointer;
+
+    transition: .2s;
+}
+
+.escribir button:hover {
+    transform: scale(1.08);
+}
+
+@media (max-width: 450px) {
+
+    body {
+        padding: 0;
+    }
+
+    .telefono {
+        width: 100%;
+        height: 100vh;
+
+        border-radius: 0;
+    }
+}

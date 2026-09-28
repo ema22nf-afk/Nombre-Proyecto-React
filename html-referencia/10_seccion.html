@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0">
+
+    <title>EduConnect - Chat Artística</title>
+
+    <link
+        rel="stylesheet"
+        href="10_seccion.css">
+
+    <!-- Font Awesome -->
+    <link
+        rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+    <main class="telefono">
+
+
+        <!-- ==================================
+             ENCABEZADO
+        =================================== -->
+
+        <header class="header">
+
+
+            <!-- BOTÓN ATRÁS -->
+
+            <a
+                class="btn-header"
+                href="11_seccion.html"
+                title="Volver a la materia"
+                aria-label="Volver a la materia">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </a>
+
+
+            <!-- TÍTULO -->
+
+            <h1>
+                Chat Artística
+            </h1>
+
+
+            <!-- BOTÓN INICIO -->
+
+            <a
+                class="btn-header"
+                href="5_seccion.html"
+                title="Volver al menú"
+                aria-label="Volver al menú">
+
+                <i class="fa-solid fa-house"></i>
+
+            </a>
+
+        </header>
+
+
+
+        <!-- ==================================
+             CONVERSACIÓN
+        =================================== -->
+
+        <main
+            class="chat"
+            id="chat">
+
+
+            <!-- MENSAJE ENVIADO -->
+
+            <div class="mensaje enviado">
+
+                Hola profesor, tengo una duda
+                sobre la actividad.
+
+            </div>
+
+
+            <!-- MENSAJE RECIBIDO -->
+
+            <div class="mensaje recibido">
+
+                Claro, dime cuál es tu duda
+                y con gusto te ayudo.
+
+            </div>
+
+
+            <!-- MENSAJE ENVIADO -->
+
+            <div class="mensaje enviado">
+
+                ¿La pintura debe hacerse
+                en cartulina?
+
+            </div>
+
+
+            <!-- MENSAJE RECIBIDO -->
+
+            <div class="mensaje recibido">
+
+                Sí. Debe realizarse en cartulina
+                tamaño pliego y entregarse el viernes.
+
+            </div>
+
+
+        </main>
+
+
+
+        <!-- ==================================
+             BARRA INFERIOR
+        =================================== -->
+
+        <footer class="footer">
+
+
+            <!-- CÁMARA -->
+
+            <button
+                type="button"
+                class="icono"
+                onclick="abrirCamara()"
+                title="Cámara">
+
+                <i class="fa-solid fa-camera"></i>
+
+            </button>
+
+
+            <!-- IMAGEN -->
+
+            <button
+                type="button"
+                class="icono"
+                onclick="seleccionarImagen()"
+                title="Enviar imagen">
+
+                <i class="fa-regular fa-image"></i>
+
+            </button>
+
+
+            <!-- MICRÓFONO -->
+
+            <button
+                type="button"
+                class="icono"
+                onclick="grabarAudio()"
+                title="Mensaje de voz">
+
+                <i class="fa-solid fa-microphone"></i>
+
+            </button>
+
+
+            <!-- CAMPO DE MENSAJE -->
+
+            <input
+                type="text"
+                id="mensajeInput"
+                placeholder="Escribe un mensaje..."
+                autocomplete="off">
+
+
+            <!-- BOTÓN ENVIAR -->
+
+            <button
+                type="button"
+                class="enviar"
+                onclick="enviarMensaje()"
+                title="Enviar mensaje">
+
+                <i class="fa-solid fa-paper-plane"></i>
+
+            </button>
+
+
+        </footer>
+
+
+    </main>
+
+
+
+    <!-- ==================================
+         JAVASCRIPT
+    =================================== -->
+
+    <script>
+
+
+        /* ==================================
+           ELEMENTOS
+        =================================== */
+
+        const input =
+            document.getElementById(
+                "mensajeInput"
+            );
+
+        const chat =
+            document.getElementById(
+                "chat"
+            );
+
+
+
+        /* ==================================
+           ENVIAR MENSAJE
+        =================================== */
+
+        function enviarMensaje() {
+
+
+            const texto =
+                input.value.trim();
+
+
+            /* No enviar mensajes vacíos */
+
+            if (texto === "") {
+
+                input.focus();
+
+                return;
+
+            }
+
+
+            /* Crear mensaje */
+
+            const mensaje =
+                document.createElement(
+                    "div"
+                );
+
+
+            mensaje.className =
+                "mensaje enviado";
+
+
+            mensaje.textContent =
+                texto;
+
+
+            /* Agregar al chat */
+
+            chat.appendChild(
+                mensaje
+            );
+
+
+            /* Limpiar campo */
+
+            input.value = "";
+
+
+            /* Bajar automáticamente */
+
+            chat.scrollTop =
+                chat.scrollHeight;
+
+
+            /* Volver a enfocar */
+
+            input.focus();
+
+        }
+
+
+
+        /* ==================================
+           ENTER PARA ENVIAR
+        =================================== */
+
+        input.addEventListener(
+            "keydown",
+            function(event) {
+
+                if (
+                    event.key === "Enter"
+                ) {
+
+                    event.preventDefault();
+
+                    enviarMensaje();
+
+                }
+
+            }
+        );
+
+
+
+        /* ==================================
+           BOTÓN CÁMARA
+        =================================== */
+
+        function abrirCamara() {
+
+            alert(
+                "La función de cámara estará disponible próximamente."
+            );
+
+        }
+
+
+
+        /* ==================================
+           BOTÓN IMAGEN
+        =================================== */
+
+        function seleccionarImagen() {
+
+            alert(
+                "La función para enviar imágenes estará disponible próximamente."
+            );
+
+        }
+
+
+
+        /* ==================================
+           BOTÓN MICRÓFONO
+        =================================== */
+
+        function grabarAudio() {
+
+            alert(
+                "La función de mensajes de voz estará disponible próximamente."
+            );
+
+        }
+
+
+    </script>
+
+
+</body>
+
+</html>

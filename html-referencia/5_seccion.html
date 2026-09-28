@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>Menú Principal</title>
+
+    <link
+    rel="stylesheet"
+    href="5_seccion.css">
+
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+
+</head>
+
+
+<body>
+
+<div class="telefono">
+
+
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+
+    <header class="header">
+
+        <h1>Mis materias</h1>
+
+    </header>
+
+
+    <!-- =========================
+         BUSCADOR
+    ========================== -->
+
+    <div class="buscador">
+
+        <input
+        type="text"
+        id="buscar"
+        placeholder="Buscar materia...">
+
+        <button onclick="buscarMateria()">
+
+            <i class="fa-solid fa-magnifying-glass"></i>
+
+        </button>
+
+    </div>
+
+
+    <!-- =========================
+         MATERIAS
+    ========================== -->
+
+    <main class="contenido">
+
+        <div
+        class="materias"
+        id="listaMaterias">
+
+
+            <!-- =========================
+                 AGREGAR MATERIA
+            ========================== -->
+
+            <a
+            href="8_seccion.html"
+            class="materia materia-nueva">
+
+                <div class="icono-materia">
+
+                    <i class="fa-solid fa-circle-plus"></i>
+
+                </div>
+
+                <span>Materia nueva</span>
+
+            </a>
+
+
+            <!-- =========================
+                 FÍSICA
+            ========================== -->
+
+            <a
+            href="18_seccion.html"
+            class="materia">
+
+                <div class="icono-materia">
+
+                    <i class="fa-solid fa-atom"></i>
+
+                </div>
+
+                <span>Física</span>
+
+            </a>
+
+
+            <!-- =========================
+                 QUÍMICA
+            ========================== -->
+
+            <a
+            href="27_seccion.html"
+            class="materia">
+
+                <div class="icono-materia">
+
+                    <i class="fa-solid fa-flask"></i>
+
+                </div>
+
+                <span>Química</span>
+
+            </a>
+
+
+            <!-- =========================
+                 ARTÍSTICA
+            ========================== -->
+
+            <a
+            href="9_seccion.html"
+            class="materia">
+
+                <div class="icono-materia">
+
+                    <i class="fa-solid fa-palette"></i>
+
+                </div>
+
+                <span>Artística</span>
+
+            </a>
+
+
+            <!-- =========================
+                 MATEMÁTICAS
+            ========================== -->
+
+            <a
+            href="36_seccion.html"
+            class="materia">
+
+                <div class="icono-materia">
+
+                    <i class="fa-solid fa-calculator"></i>
+
+                </div>
+
+                <span>Matemáticas</span>
+
+            </a>
+
+
+        </div>
+
+    </main>
+
+
+    <!-- =========================
+         BARRA INFERIOR
+    ========================== -->
+
+    <footer class="footer">
+
+        <a
+        href="5_seccion.html"
+        class="footer-icon activo">
+
+            <i class="fa-solid fa-house"></i>
+
+        </a>
+
+
+        <a
+        href="7_seccion.html"
+        class="footer-icon">
+
+            <i class="fa-solid fa-bell"></i>
+
+        </a>
+
+
+        <a
+        href="6_seccion.html"
+        class="footer-icon">
+
+            <i class="fa-solid fa-user"></i>
+
+        </a>
+
+    </footer>
+
+
+</div>
+
+
+<script>
+
+
+/* =========================================
+   DETECTAR REFRESCO DE LA PÁGINA
+========================================= */
+
+const navegacion =
+    performance.getEntriesByType("navigation")[0];
+
+
+if (
+    navegacion &&
+    navegacion.type === "reload"
+) {
+
+    sessionStorage.removeItem(
+        "educonnect_materias_temporales"
+    );
+
+}
+
+
+/* =========================================
+   CARGAR MATERIAS TEMPORALES
+========================================= */
+
+function cargarMaterias() {
+
+
+    const materiasGuardadas =
+        JSON.parse(
+            sessionStorage.getItem(
+                "educonnect_materias_temporales"
+            )
+        ) || [];
+
+
+    const lista =
+        document.getElementById(
+            "listaMaterias"
+        );
+
+
+    materiasGuardadas.forEach(
+        function(materia) {
+
+
+            /* =========================
+               CREAR TARJETA
+            ========================== */
+
+            const tarjeta =
+                document.createElement("a");
+
+
+            tarjeta.className =
+                "materia materia-nueva-creada";
+
+
+            tarjeta.href = "#";
+
+
+            /* =========================
+               ICONO
+            ========================== */
+
+            const icono =
+                document.createElement("div");
+
+
+            icono.className =
+                "icono-materia";
+
+
+            icono.innerHTML =
+                '<i class="fa-solid fa-book"></i>';
+
+
+            /* =========================
+               NOMBRE
+            ========================== */
+
+            const nombre =
+                document.createElement("span");
+
+
+            nombre.textContent =
+                materia.nombre;
+
+
+            /* =========================
+               PROFESOR
+            ========================== */
+
+            const profesor =
+                document.createElement("small");
+
+
+            profesor.textContent =
+                materia.profesor;
+
+
+            /* =========================
+               CÓDIGO
+            ========================== */
+
+            const codigo =
+                document.createElement("small");
+
+
+            codigo.textContent =
+                "Código: " + materia.codigo;
+
+
+            /* =========================
+               AGREGAR ELEMENTOS
+            ========================== */
+
+            tarjeta.appendChild(icono);
+
+            tarjeta.appendChild(nombre);
+
+            tarjeta.appendChild(profesor);
+
+            tarjeta.appendChild(codigo);
+
+
+            lista.appendChild(tarjeta);
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   BUSCAR MATERIA
+========================================= */
+
+function buscarMateria() {
+
+
+    const busqueda =
+        document
+        .getElementById("buscar")
+        .value
+        .toLowerCase()
+        .trim();
+
+
+    const materias =
+        document.querySelectorAll(
+            ".materia"
+        );
+
+
+    materias.forEach(
+        function(materia) {
+
+
+            const texto =
+                materia.textContent
+                .toLowerCase();
+
+
+            if (
+                texto.includes(busqueda)
+            ) {
+
+                materia.style.display =
+                    "flex";
+
+            } else {
+
+                materia.style.display =
+                    "none";
+
+            }
+
+        }
+    );
+
+}
+
+
+/* =========================================
+   BUSCAR MIENTRAS ESCRIBE
+========================================= */
+
+document
+.getElementById("buscar")
+.addEventListener(
+    "input",
+    buscarMateria
+);
+
+
+/* =========================================
+   CARGAR MATERIAS
+========================================= */
+
+cargarMaterias();
+
+
+</script>
+
+
+</body>
+
+</html>

@@ -1,0 +1,389 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+}
+
+
+/* =========================================
+   FONDO GENERAL
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172234,
+            #3b78b8
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+}
+
+
+/* =========================================
+   TELÉFONO
+========================================= */
+
+.telefono {
+
+    width: 380px;
+
+    height: 720px;
+
+    background: #fffef5;
+
+    border-radius: 45px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px
+        rgba(0, 0, 0, 0.25);
+
+    display: flex;
+
+    flex-direction: column;
+}
+
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+.encabezado {
+
+    width: 100%;
+
+    height: 85px;
+
+    min-height: 85px;
+
+    background: #dcecff;
+
+    padding:
+        18px 20px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    position: relative;
+
+    flex-shrink: 0;
+}
+
+
+/* =========================================
+   BOTÓN INICIO
+========================================= */
+
+.inicio {
+
+    position: absolute;
+
+    left: 20px;
+
+    width: 42px;
+
+    height: 42px;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    text-decoration: none;
+
+    font-size: 21px;
+
+    border-radius: 50%;
+
+    transition: 0.2s;
+}
+
+
+.inicio:hover {
+
+    background:
+        rgba(
+            255,
+            255,
+            255,
+            0.7
+        );
+
+    transform:
+        scale(1.05);
+}
+
+
+/* =========================================
+   TÍTULO
+========================================= */
+
+h1 {
+
+    font-size: 28px;
+
+    color: #202d3d;
+
+    font-weight: 700;
+
+    text-align: center;
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.contenido {
+
+    flex: 1;
+
+    min-height: 0;
+
+    padding:
+        28px 22px;
+
+    overflow-y: auto;
+}
+
+
+/* =========================================
+   SUBTÍTULO
+========================================= */
+
+.contenido h2 {
+
+    color: #202d3d;
+
+    font-size: 22px;
+
+    text-align: center;
+
+    margin-bottom: 8px;
+}
+
+
+/* =========================================
+   DESCRIPCIÓN
+========================================= */
+
+.descripcion {
+
+    color: #697582;
+
+    font-size: 14px;
+
+    text-align: center;
+
+    margin-bottom: 25px;
+}
+
+
+/* =========================================
+   LISTA DE ESTUDIANTES
+========================================= */
+
+.lista-estudiantes {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 14px;
+}
+
+
+/* =========================================
+   TARJETA DEL ESTUDIANTE
+========================================= */
+
+.estudiante {
+
+    width: 100%;
+
+    min-height: 78px;
+
+    padding:
+        12px 15px;
+
+    background: #eef3f8;
+
+    border-radius: 15px;
+
+    border-left:
+        5px solid #55b8ff;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 13px;
+
+    text-decoration: none;
+
+    color: #202d3d;
+
+    box-shadow:
+        0 3px 8px
+        rgba(
+            0,
+            0,
+            0,
+            0.08
+        );
+
+    transition:
+        transform 0.2s,
+        background 0.2s;
+}
+
+
+.estudiante:hover {
+
+    background: #dcecff;
+
+    transform:
+        translateY(-2px);
+}
+
+
+.estudiante:active {
+
+    transform:
+        scale(0.98);
+}
+
+
+/* =========================================
+   FOTO / ICONO
+========================================= */
+
+.foto {
+
+    width: 48px;
+
+    height: 48px;
+
+    min-width: 48px;
+
+    border-radius: 50%;
+
+    background: #dcecff;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    font-size: 25px;
+}
+
+
+/* =========================================
+   INFORMACIÓN
+========================================= */
+
+.informacion {
+
+    flex: 1;
+}
+
+
+.informacion h3 {
+
+    color: #202d3d;
+
+    font-size: 16px;
+
+    margin-bottom: 5px;
+}
+
+
+.informacion p {
+
+    color: #697582;
+
+    font-size: 13px;
+}
+
+
+/* =========================================
+   FLECHA
+========================================= */
+
+.flecha {
+
+    font-size: 30px;
+
+    color: #55b8ff;
+
+    font-weight: bold;
+}
+
+
+/* =========================================
+   BARRA DE DESPLAZAMIENTO
+========================================= */
+
+.contenido::-webkit-scrollbar {
+
+    width: 0;
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 450px) {
+
+    body {
+
+        padding: 0;
+    }
+
+
+    .telefono {
+
+        width: 100%;
+
+        height: 100vh;
+
+        border-radius: 0;
+    }
+
+
+    .contenido {
+
+        padding:
+            25px 18px;
+    }
+
+}

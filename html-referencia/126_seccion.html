@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chat - Sara Ramírez</title>
+
+    <link rel="stylesheet" href="126_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="108_seccion.html" class="boton-volver">←</a>
+        <h1>Chat</h1>
+    </header>
+
+    <div class="perfil">
+
+        <div class="avatar">👩‍🎨</div>
+
+        <div>
+            <h2>Sara Ramírez</h2>
+            <p>11° · Artística</p>
+        </div>
+
+    </div>
+
+    <main class="chat" id="chat">
+
+        <div class="mensaje estudiante">
+            <p>Hola profesor, tengo una pregunta sobre el proyecto artístico.</p>
+            <span>12:15 p. m.</span>
+        </div>
+
+        <div class="mensaje profesor">
+            <p>Hola, Sara. Claro, dime cuál es tu pregunta.</p>
+            <span>12:17 p. m.</span>
+        </div>
+
+        <div class="mensaje estudiante">
+            <p>¿Podemos combinar diferentes técnicas en nuestro proyecto?</p>
+            <span>12:19 p. m.</span>
+        </div>
+
+        <div class="mensaje profesor">
+            <p>Sí, Sara. Puedes combinar diferentes técnicas para crear una propuesta artística original.</p>
+            <span>12:21 p. m.</span>
+        </div>
+
+    </main>
+
+    <div class="escribir">
+
+        <input
+            type="text"
+            id="mensaje"
+            placeholder="Escribe un mensaje..."
+        >
+
+        <button onclick="enviarMensaje()">➤</button>
+
+    </div>
+
+</div>
+
+<script>
+
+function enviarMensaje() {
+
+    const input = document.getElementById("mensaje");
+    const texto = input.value.trim();
+
+    if (texto === "") {
+        return;
+    }
+
+    const chat = document.getElementById("chat");
+
+    const mensaje = document.createElement("div");
+    mensaje.className = "mensaje profesor";
+
+    const contenido = document.createElement("p");
+    contenido.textContent = texto;
+
+    const hora = document.createElement("span");
+
+    hora.textContent = new Date().toLocaleTimeString([], {
+        hour: "2-digit",
+        minute: "2-digit"
+    });
+
+    mensaje.appendChild(contenido);
+    mensaje.appendChild(hora);
+
+    chat.appendChild(mensaje);
+
+    input.value = "";
+
+    chat.scrollTop = chat.scrollHeight;
+}
+
+document.getElementById("mensaje").addEventListener("keydown", function(event) {
+
+    if (event.key === "Enter") {
+        enviarMensaje();
+    }
+
+});
+
+</script>
+
+</body>
+
+</html>

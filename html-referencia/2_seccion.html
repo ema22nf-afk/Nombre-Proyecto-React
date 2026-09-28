@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Iniciar sesión - EduConnect</title>
+
+    <link rel="stylesheet" href="2_seccion.css">
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+
+        <a class="back" href="index.html">
+            ‹ Back
+        </a>
+
+        <h1>
+            Inicia sesión en EduConnect
+        </h1>
+
+    </header>
+
+
+    <!-- LOGIN -->
+    <main class="login">
+
+        <h2>Estudiante o maestro</h2>
+
+        <!-- ROLES -->
+        <div class="roles">
+
+            <button
+                type="button"
+                class="role active"
+                id="estudianteBtn"
+                onclick="seleccionarRol('estudiante')">
+
+                Estudiante
+
+            </button>
+
+            <button
+                type="button"
+                class="role"
+                id="maestroBtn"
+                onclick="seleccionarRol('maestro')">
+
+                Maestro
+
+            </button>
+
+        </div>
+
+
+        <!-- CORREO -->
+        <label for="email">
+            Correo electrónico
+        </label>
+
+        <input
+            type="email"
+            id="email"
+            placeholder="ejemplo@gmail.com"
+        >
+
+
+        <!-- CONTRASEÑA -->
+        <label for="password">
+            Contraseña
+        </label>
+
+        <div class="password-container">
+
+            <input
+                type="password"
+                id="password"
+                placeholder="Escribe tu contraseña"
+            >
+
+            <button
+                type="button"
+                class="show-password"
+                onclick="mostrarPassword()">
+
+                👁
+
+            </button>
+
+        </div>
+
+
+        <!-- PIN -->
+        <label for="pin">
+            Ingrese su PIN
+        </label>
+
+        <input
+            type="password"
+            id="pin"
+            placeholder="****"
+            maxlength="4"
+        >
+
+
+        <!-- INICIAR SESIÓN -->
+        <button
+            type="button"
+            class="login-button"
+            onclick="iniciarSesion()">
+
+            Iniciar sesión
+
+        </button>
+
+
+        <!-- OLVIDÓ CONTRASEÑA -->
+        <a
+            class="forgot-button"
+            href="3_seccion.html">
+
+            ¿Olvidaste la contraseña?
+
+        </a>
+
+    </main>
+
+</div>
+
+
+<script>
+
+let rolSeleccionado = "estudiante";
+
+
+function seleccionarRol(rol) {
+
+    rolSeleccionado = rol;
+
+    const estudiante =
+        document.getElementById("estudianteBtn");
+
+    const maestro =
+        document.getElementById("maestroBtn");
+
+    if (rol === "estudiante") {
+
+        estudiante.classList.add("active");
+        maestro.classList.remove("active");
+
+    } else {
+
+        maestro.classList.add("active");
+        estudiante.classList.remove("active");
+
+    }
+}
+
+
+function mostrarPassword() {
+
+    const password =
+        document.getElementById("password");
+
+    if (password.type === "password") {
+
+        password.type = "text";
+
+    } else {
+
+        password.type = "password";
+
+    }
+}
+
+
+function iniciarSesion() {
+
+    const correo =
+        document.getElementById("email").value.trim();
+
+    const password =
+        document.getElementById("password").value;
+
+    const pin =
+        document.getElementById("pin").value;
+
+
+    /* COMPROBAR CAMPOS */
+
+    if (
+        correo === "" ||
+        password === "" ||
+        pin === ""
+    ) {
+
+        alert("Completa todos los campos.");
+
+        return;
+    }
+
+
+    /* VALIDAR PIN */
+
+    if (pin.length !== 4) {
+
+        alert("El PIN debe tener 4 números.");
+
+        return;
+    }
+
+
+    /* BUSCAR USUARIO */
+
+    const usuario =
+        JSON.parse(
+            localStorage.getItem("educonnectUsuario")
+        );
+
+
+    /*
+       Si ya existe un usuario registrado,
+       comprobamos sus datos.
+    */
+
+    if (usuario) {
+
+        if (
+            usuario.correo !== correo ||
+            usuario.password !== password ||
+            usuario.pin !== pin ||
+            usuario.rol !== rolSeleccionado
+        ) {
+
+            alert(
+                "Los datos ingresados no coinciden con el usuario registrado."
+            );
+
+            return;
+        }
+
+    }
+
+
+    /* GUARDAR SESIÓN */
+
+    localStorage.setItem(
+        "educonnectSesion",
+        JSON.stringify({
+            correo: correo,
+            rol: rolSeleccionado
+        })
+    );
+
+
+    /* REDIRECCIÓN SEGÚN EL ROL */
+
+    if (rolSeleccionado === "estudiante") {
+
+        window.location.href =
+            "5_seccion.html";
+
+    } else {
+
+        window.location.href =
+            "45_seccion.html";
+
+    }
+
+}
+
+</script>
+
+</body>
+</html>

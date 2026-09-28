@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calificar - Sara Ramírez</title>
+
+    <link rel="stylesheet" href="128_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="127_seccion.html" class="boton-volver">←</a>
+        <h1>Calificar actividad</h1>
+    </header>
+
+    <main class="contenido">
+
+        <div class="perfil">
+            <div class="avatar">👩‍🎨</div>
+
+            <div>
+                <h2>Sara Ramírez</h2>
+                <p>11° · Artística</p>
+            </div>
+        </div>
+
+        <div class="tarea">
+
+            <h2>Actividad 2</h2>
+
+            <h3>Proyecto artístico</h3>
+
+            <p>
+                Revisión del proyecto artístico realizado por la estudiante.
+            </p>
+
+            <div class="archivo">
+                📎 Proyecto_artistico.pdf
+            </div>
+
+        </div>
+
+        <form id="formulario">
+
+            <label for="calificacion">
+                Calificación
+            </label>
+
+            <input
+                type="number"
+                id="calificacion"
+                min="0"
+                max="5"
+                step="0.1"
+                placeholder="Ejemplo: 4.5"
+                required
+            >
+
+            <label for="comentario">
+                Comentario
+            </label>
+
+            <textarea
+                id="comentario"
+                rows="5"
+                placeholder="Escribe un comentario para la estudiante..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Guardar calificación
+            </button>
+
+        </form>
+
+        <div id="mensajeExito" class="exito">
+            ✓ Calificación guardada correctamente.
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+document.getElementById("formulario").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const calificacion =
+        parseFloat(document.getElementById("calificacion").value);
+
+    const comentario =
+        document.getElementById("comentario").value.trim();
+
+    if (
+        isNaN(calificacion) ||
+        calificacion < 0 ||
+        calificacion > 5 ||
+        comentario === ""
+    ) {
+        return;
+    }
+
+    localStorage.setItem(
+        "calificacion_sara_actividad2",
+        calificacion
+    );
+
+    localStorage.setItem(
+        "comentario_sara_actividad2",
+        comentario
+    );
+
+    document.getElementById("mensajeExito").style.display = "block";
+
+    setTimeout(function() {
+        window.location.href = "127_seccion.html";
+    }, 1000);
+
+});
+
+</script>
+
+</body>
+
+</html>

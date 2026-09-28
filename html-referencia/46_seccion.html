@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduConnect - Perfil</title>
+
+    <link rel="stylesheet" href="46_seccion.css">
+</head>
+
+<body>
+
+    <main class="telefono">
+
+        <!-- =========================
+             ENCABEZADO
+        ========================== -->
+
+        <header>
+
+            <!-- Volver al menú -->
+            <a href="45_seccion.html"
+               class="volver"
+               title="Volver al menú"
+               aria-label="Volver al menú">
+                🏠
+            </a>
+
+            <h1>Perfil</h1>
+
+        </header>
+
+
+        <!-- =========================
+             CONTENIDO
+        ========================== -->
+
+        <section class="contenido">
+
+            <!-- Foto de perfil -->
+            <div class="foto-container">
+
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/4140/4140048.png"
+                    class="perfil"
+                    alt="Foto de perfil"
+                >
+
+            </div>
+
+
+            <!-- Nombre -->
+            <input
+                type="text"
+                id="nombre"
+                placeholder="Nombre"
+                autocomplete="name"
+            >
+
+
+            <!-- Grado -->
+            <input
+                type="text"
+                id="materia"
+                placeholder="Materia que enseña"
+            >
+
+
+            <!-- Código -->
+            <input
+                type="text"
+                id="codigo"
+                placeholder="Código de profesor"
+            >
+
+
+            <!-- Teléfono -->
+            <input
+                type="tel"
+                id="telefonoUsuario"
+                placeholder="Número de teléfono"
+                autocomplete="tel"
+            >
+
+
+            <!-- Correo -->
+            <input
+                type="email"
+                id="correo"
+                placeholder="Correo electrónico"
+                autocomplete="email"
+            >
+
+
+            <!-- Guardar -->
+            <button
+                type="button"
+                class="guardar"
+                onclick="guardarPerfil()">
+                Guardar
+            </button>
+
+
+            <!-- CERRAR SESIÓN -->
+            <button
+                type="button"
+                class="cerrar-sesion"
+                onclick="cerrarSesion()">
+                Cerrar sesión
+            </button>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* ==========================================
+           CARGAR DATOS GUARDADOS
+        ========================================== */
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const perfilGuardado =
+                JSON.parse(
+                    localStorage.getItem("educonnect_perfil")
+                );
+
+            if (!perfilGuardado) {
+                return;
+            }
+
+            document.getElementById("nombre").value =
+                perfilGuardado.nombre || "";
+
+            document.getElementById("grado").value =
+                perfilGuardado.grado || "";
+
+            document.getElementById("codigo").value =
+                perfilGuardado.codigo || "";
+
+            document.getElementById("telefonoUsuario").value =
+                perfilGuardado.telefono || "";
+
+            document.getElementById("correo").value =
+                perfilGuardado.correo || "";
+
+        });
+
+
+        /* ==========================================
+           GUARDAR PERFIL
+        ========================================== */
+
+        function guardarPerfil() {
+
+            const nombre =
+                document.getElementById("nombre").value.trim();
+
+            const grado =
+                document.getElementById("grado").value.trim();
+
+            const codigo =
+                document.getElementById("codigo").value.trim();
+
+            const telefono =
+                document.getElementById("telefonoUsuario").value.trim();
+
+            const correo =
+                document.getElementById("correo").value.trim();
+
+
+            /* Comprobar campos */
+
+            if (
+                nombre === "" ||
+                grado === "" ||
+                codigo === "" ||
+                telefono === "" ||
+                correo === ""
+            ) {
+
+                alert("Complete todos los campos.");
+
+                return;
+            }
+
+
+            /* Guardar información */
+
+            const perfil = {
+
+                nombre: nombre,
+                grado: grado,
+                codigo: codigo,
+                telefono: telefono,
+                correo: correo
+
+            };
+
+
+            localStorage.setItem(
+                "educonnect_perfil",
+                JSON.stringify(perfil)
+            );
+
+
+            alert("Perfil guardado correctamente.");
+
+
+            /* Regresar al menú */
+
+            window.location.href =
+                "5_seccion.html";
+
+        }
+
+
+        /* ==========================================
+           CERRAR SESIÓN
+        ========================================== */
+
+        function cerrarSesion() {
+
+            const respuesta = confirm(
+                "¿Estás seguro de que deseas cerrar sesión?"
+            );
+
+            if (respuesta) {
+
+                window.location.href =
+                    "index.html";
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

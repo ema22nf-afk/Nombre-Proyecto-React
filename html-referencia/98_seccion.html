@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calificaciones - Daniel Rodríguez</title>
+    <link rel="stylesheet" href="98_seccion.css">
+</head>
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="63_seccion.html" class="boton-volver">←</a>
+        <h1>Calificaciones</h1>
+    </header>
+
+    <main class="contenido">
+
+        <div class="perfil">
+            <div class="avatar">👨‍🎓</div>
+            <div>
+                <h2>Daniel Rodríguez</h2>
+                <p>11° · Tecnología</p>
+            </div>
+        </div>
+
+        <section class="resumen">
+            <h2>Promedio general</h2>
+            <div class="promedio" id="promedio">4.5</div>
+            <p>Calificación sobre 5.0</p>
+        </section>
+
+        <section class="actividades">
+
+            <div class="actividad">
+                <div>
+                    <h3>Actividad 1</h3>
+                    <p>Introducción a la tecnología</p>
+                </div>
+                <span class="nota">4.4</span>
+            </div>
+
+            <div class="actividad pendiente" id="actividad2">
+                <div>
+                    <h3>Actividad 2</h3>
+                    <p>Investigación sobre tecnología</p>
+                    <span class="estado">Pendiente de calificación</span>
+                </div>
+
+                <a href="99_seccion.html" class="boton-calificar">
+                    Calificar
+                </a>
+            </div>
+
+            <div class="actividad">
+                <div>
+                    <h3>Actividad 3</h3>
+                    <p>Proyecto tecnológico</p>
+                </div>
+                <span class="nota">4.6</span>
+            </div>
+
+        </section>
+
+    </main>
+
+</div>
+
+<script>
+function cargarCalificacion() {
+
+    const datos = localStorage.getItem(
+        "calificacion_daniel_actividad2"
+    );
+
+    if (!datos) {
+        return;
+    }
+
+    const calificacion = JSON.parse(datos);
+
+    const actividad = document.getElementById("actividad2");
+
+    actividad.classList.remove("pendiente");
+
+    actividad.innerHTML = `
+        <div>
+            <h3>Actividad 2</h3>
+            <p>Investigación sobre tecnología</p>
+            <span class="estado calificada">
+                ✓ Calificada
+            </span>
+            <p class="comentario">
+                ${calificacion.comentario}
+            </p>
+        </div>
+
+        <span class="nota">${calificacion.nota.toFixed(1)}</span>
+    `;
+
+    const promedio = (
+        (4.4 + calificacion.nota + 4.6) / 3
+    ).toFixed(1);
+
+    document.getElementById("promedio").textContent = promedio;
+}
+
+cargarCalificacion();
+</script>
+
+</body>
+</html>

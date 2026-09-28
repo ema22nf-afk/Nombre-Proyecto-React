@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>Registrarse - EduConnect</title>
+
+    <link rel="stylesheet" href="4_seccion.css">
+
+</head>
+
+<body>
+
+<div class="app">
+
+    <!-- ENCABEZADO -->
+
+    <header class="header">
+
+        <a
+            class="back"
+            href="index.html">
+
+            ‹ Back
+
+        </a>
+
+        <h1>
+            Registrarse en EduConnect
+        </h1>
+
+    </header>
+
+
+    <!-- FORMULARIO -->
+
+    <form
+        id="registro"
+        class="formulario">
+
+
+        <label>
+            Estudiante o maestro
+        </label>
+
+
+        <!-- ROLES -->
+
+        <div class="roles">
+
+            <button
+                type="button"
+                class="role active"
+                id="estudianteBtn"
+                onclick="seleccionarRol('estudiante')">
+
+                Estudiante
+
+            </button>
+
+
+            <button
+                type="button"
+                class="role"
+                id="maestroBtn"
+                onclick="seleccionarRol('maestro')">
+
+                Maestro
+
+            </button>
+
+        </div>
+
+
+        <!-- CORREO -->
+
+        <label for="correo">
+            Correo electrónico
+        </label>
+
+        <input
+            type="email"
+            id="correo"
+            placeholder="ejemplo@gmail.com"
+            required
+        >
+
+
+        <!-- CONTRASEÑA -->
+
+        <label for="password">
+            Crea una contraseña
+        </label>
+
+        <input
+            type="password"
+            id="password"
+            placeholder="********"
+            required
+        >
+
+
+        <!-- CELULAR -->
+
+        <label for="celular">
+            Número de celular
+        </label>
+
+        <input
+            type="tel"
+            id="celular"
+            placeholder="3001234567"
+            maxlength="10"
+            required
+        >
+
+
+        <!-- PIN -->
+
+        <label for="pin">
+            Ingrese su PIN
+        </label>
+
+        <input
+            type="password"
+            id="pin"
+            maxlength="4"
+            placeholder="****"
+            required
+        >
+
+
+        <!-- REGISTRAR -->
+
+        <button
+            type="submit"
+            class="registrar">
+
+            Registrarse
+
+        </button>
+
+
+    </form>
+
+</div>
+
+
+<script>
+
+let rolSeleccionado = "estudiante";
+
+
+/* SELECCIONAR ROL */
+
+function seleccionarRol(rol) {
+
+    rolSeleccionado = rol;
+
+    const estudiante =
+        document.getElementById("estudianteBtn");
+
+    const maestro =
+        document.getElementById("maestroBtn");
+
+
+    if (rol === "estudiante") {
+
+        estudiante.classList.add("active");
+
+        maestro.classList.remove("active");
+
+    } else {
+
+        maestro.classList.add("active");
+
+        estudiante.classList.remove("active");
+
+    }
+
+}
+
+
+/* REGISTRO */
+
+document
+.getElementById("registro")
+.addEventListener("submit", function(e) {
+
+    e.preventDefault();
+
+
+    const correo =
+        document.getElementById("correo")
+        .value
+        .trim();
+
+
+    const password =
+        document.getElementById("password")
+        .value;
+
+
+    const celular =
+        document.getElementById("celular")
+        .value
+        .trim();
+
+
+    const pin =
+        document.getElementById("pin")
+        .value;
+
+
+    /* VALIDAR CELULAR */
+
+    if (!/^\d{10}$/.test(celular)) {
+
+        alert(
+            "El número de celular debe tener 10 dígitos."
+        );
+
+        return;
+    }
+
+
+    /* VALIDAR PIN */
+
+    if (!/^\d{4}$/.test(pin)) {
+
+        alert(
+            "El PIN debe tener 4 números."
+        );
+
+        return;
+    }
+
+
+    /* GUARDAR USUARIO */
+
+    const usuario = {
+
+        rol: rolSeleccionado,
+
+        correo: correo,
+
+        password: password,
+
+        celular: celular,
+
+        pin: pin
+
+    };
+
+
+    localStorage.setItem(
+        "educonnectUsuario",
+        JSON.stringify(usuario)
+    );
+
+
+    /* GUARDAR SESIÓN */
+
+    localStorage.setItem(
+        "educonnectSesion",
+        JSON.stringify({
+            correo: correo,
+            rol: rolSeleccionado
+        })
+    );
+
+
+    alert(
+        "Registro realizado correctamente."
+    );
+
+
+    /* REDIRECCIÓN SEGÚN EL ROL */
+
+    if (rolSeleccionado === "estudiante") {
+
+        window.location.href =
+            "5_seccion.html";
+
+    } else {
+
+        window.location.href =
+            "45_seccion.html";
+
+    }
+
+});
+
+</script>
+
+</body>
+</html>

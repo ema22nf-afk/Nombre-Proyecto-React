@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>EduConnect - Artística</title>
+
+    <link rel="stylesheet" href="9_seccion.css">
+</head>
+
+<body>
+
+    <main class="telefono">
+
+        <!-- =========================
+             ENCABEZADO
+        ========================== -->
+
+        <header class="header">
+
+            <!-- Volver al menú -->
+
+            <a
+                href="5_seccion.html"
+                class="inicio"
+                title="Volver al menú"
+                aria-label="Volver al menú">
+                🏠
+            </a>
+
+
+            <!-- Buscador -->
+
+            <div class="buscador">
+
+                <input
+                    type="text"
+                    id="buscar"
+                    value="Artística"
+                    placeholder="Buscar materia..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    onclick="buscarMateria()"
+                    aria-label="Buscar">
+                    🔍
+                </button>
+
+            </div>
+
+        </header>
+
+
+        <!-- =========================
+             CONTENIDO
+        ========================== -->
+
+        <section class="contenido">
+
+            <!-- Imagen de la materia -->
+
+            <div class="imagen-container">
+
+                <img
+                    src="https://cdn-icons-png.flaticon.com/512/3163/3163478.png"
+                    class="imagen"
+                    alt="Artística"
+                >
+
+            </div>
+
+
+            <!-- Nombre -->
+
+            <h1>Artística</h1>
+
+
+            <!-- Profesor -->
+
+            <div class="dato">
+
+                <span class="etiqueta">
+                    Profesor
+                </span>
+
+                <span>
+                    Carlos Ramírez
+                </span>
+
+            </div>
+
+
+            <!-- Código -->
+
+            <div class="dato">
+
+                <span class="etiqueta">
+                    Código
+                </span>
+
+                <span>
+                    ART-101
+                </span>
+
+            </div>
+
+
+            <!-- Entrar -->
+
+            <a
+                class="entrar"
+                href="11_seccion.html">
+                Entrar a la materia
+            </a>
+
+        </section>
+
+    </main>
+
+
+    <script>
+
+        /* ==========================================
+           BUSCAR MATERIA
+        ========================================== */
+
+        function buscarMateria() {
+
+            const buscador =
+                document.getElementById("buscar");
+
+            const materia =
+                buscador.value.trim();
+
+
+            if (materia === "") {
+
+                alert(
+                    "Escriba el nombre de una materia."
+                );
+
+                buscador.focus();
+
+                return;
+            }
+
+
+            if (
+                materia.toLowerCase() ===
+                "artística".toLowerCase()
+                ||
+                materia.toLowerCase() ===
+                "artistica"
+            ) {
+
+                alert(
+                    "Materia encontrada: Artística"
+                );
+
+            } else {
+
+                alert(
+                    "No se encontró la materia: " +
+                    materia
+                );
+
+            }
+
+        }
+
+    </script>
+
+</body>
+
+</html>

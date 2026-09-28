@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calificaciones - Valentina Torres</title>
+
+    <link rel="stylesheet" href="115_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="104_seccion.html" class="boton-volver">←</a>
+        <h1>Calificaciones</h1>
+    </header>
+
+    <div class="perfil">
+
+        <div class="avatar">👩‍🎨</div>
+
+        <div>
+            <h2>Valentina Torres</h2>
+            <p>10° · Artística</p>
+        </div>
+
+    </div>
+
+    <main class="contenido">
+
+        <div class="promedio">
+            <span>Promedio</span>
+            <strong id="promedio">4.6</strong>
+        </div>
+
+        <h3>Actividades</h3>
+
+        <div class="actividad">
+
+            <div>
+                <strong>Actividad 1</strong>
+                <p>Ejercicio de dibujo</p>
+            </div>
+
+            <span class="nota">4.6</span>
+
+        </div>
+
+        <div class="actividad pendiente">
+
+            <div>
+                <strong>Actividad 2</strong>
+                <p>Proyecto artístico</p>
+                <small id="estado">Pendiente de calificación</small>
+                <small id="comentario"></small>
+            </div>
+
+            <a href="116_seccion.html"
+               class="boton-calificar"
+               id="botonCalificar">
+                Calificar
+            </a>
+
+            <span class="nota" id="nota2"></span>
+
+        </div>
+
+        <div class="actividad">
+
+            <div>
+                <strong>Actividad 3</strong>
+                <p>Composición artística</p>
+            </div>
+
+            <span class="nota">4.7</span>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+const calificacion = localStorage.getItem(
+    "calificacion_valentina_actividad2"
+);
+
+if (calificacion !== null) {
+
+    const nota = parseFloat(calificacion);
+
+    document.getElementById("estado").textContent =
+        "✓ Calificada";
+
+    document.getElementById("nota2").textContent =
+        nota.toFixed(1);
+
+    document.getElementById("botonCalificar").style.display =
+        "none";
+
+    const comentario = localStorage.getItem(
+        "comentario_valentina_actividad2"
+    );
+
+    if (comentario) {
+
+        document.getElementById("comentario").textContent =
+            "Comentario: " + comentario;
+    }
+
+    const promedio = (4.6 + nota + 4.7) / 3;
+
+    document.getElementById("promedio").textContent =
+        promedio.toFixed(1);
+}
+
+</script>
+
+</body>
+
+</html>

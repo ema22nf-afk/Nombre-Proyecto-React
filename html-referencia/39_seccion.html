@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Chat Matemáticas</title>
+
+    <link rel="stylesheet" href="39_seccion.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+
+        <!-- ATRÁS -->
+        <a class="boton" href="37_seccion.html">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+
+        <h1>Chat Matemáticas</h1>
+
+        <!-- INICIO -->
+        <a class="boton" href="5_seccion.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+    </header>
+
+
+    <!-- CONVERSACIÓN -->
+    <main class="chat">
+
+        <div class="mensaje enviado">
+            Hola profesor, tengo una duda sobre la actividad.
+        </div>
+
+        <div class="mensaje recibido">
+            Hola, claro. Dime cuál es tu duda y con gusto te ayudo.
+        </div>
+
+        <div class="mensaje enviado">
+            ¿El ejercicio se debe resolver mostrando todo el procedimiento?
+        </div>
+
+        <div class="mensaje recibido">
+            Sí, debes mostrar el procedimiento completo para poder revisar cómo llegaste a la respuesta.
+        </div>
+
+    </main>
+
+
+    <!-- BARRA PARA ESCRIBIR -->
+    <footer class="footer">
+
+        <button class="icono">
+            <i class="fa-solid fa-camera"></i>
+        </button>
+
+        <button class="icono">
+            <i class="fa-regular fa-image"></i>
+        </button>
+
+        <button class="icono">
+            <i class="fa-solid fa-microphone"></i>
+        </button>
+
+        <input
+            type="text"
+            id="mensajeInput"
+            placeholder="Escribe un mensaje...">
+
+        <button class="enviar" onclick="enviarMensaje()">
+            <i class="fa-solid fa-paper-plane"></i>
+        </button>
+
+    </footer>
+
+</div>
+
+
+<script>
+
+function enviarMensaje(){
+
+    let input = document.getElementById("mensajeInput");
+    let mensaje = input.value.trim();
+
+    if(mensaje !== ""){
+
+        let chat = document.querySelector(".chat");
+
+        let nuevoMensaje = document.createElement("div");
+
+        nuevoMensaje.classList.add("mensaje", "enviado");
+
+        nuevoMensaje.textContent = mensaje;
+
+        chat.appendChild(nuevoMensaje);
+
+        input.value = "";
+
+        chat.scrollTop = chat.scrollHeight;
+    }
+
+}
+
+document.getElementById("mensajeInput").addEventListener("keypress", function(event){
+
+    if(event.key === "Enter"){
+        enviarMensaje();
+    }
+
+});
+
+</script>
+
+</body>
+</html>

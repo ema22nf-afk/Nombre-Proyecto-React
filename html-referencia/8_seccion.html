@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>EduConnect - Nueva Materia</title>
+
+    <link
+    rel="stylesheet"
+    href="8_seccion.css">
+
+</head>
+
+
+<body>
+
+
+<main class="telefono">
+
+
+    <!-- =========================
+         ENCABEZADO
+    ========================== -->
+
+    <header class="header">
+
+        <a
+        class="inicio"
+        href="5_seccion.html"
+        title="Volver al menú"
+        aria-label="Volver al menú">
+
+            🏠
+
+        </a>
+
+
+        <h1>Materia Nueva</h1>
+
+    </header>
+
+
+    <!-- =========================
+         CONTENIDO
+    ========================== -->
+
+    <section class="contenido">
+
+
+        <div class="icono">
+
+            📒✏️
+
+        </div>
+
+
+        <form id="formulario">
+
+
+            <!-- =========================
+                 NOMBRE
+            ========================== -->
+
+            <input
+            type="text"
+            id="materia"
+            placeholder="Nombre de la materia"
+            required>
+
+
+            <!-- =========================
+                 PROFESOR
+            ========================== -->
+
+            <input
+            type="text"
+            id="profesor"
+            placeholder="Nombre del profesor"
+            required>
+
+
+            <!-- =========================
+                 CÓDIGO
+            ========================== -->
+
+            <input
+            type="text"
+            id="codigo"
+            placeholder="Código de la materia"
+            required>
+
+
+            <!-- =========================
+                 CREAR
+            ========================== -->
+
+            <button
+            type="submit"
+            class="crear">
+
+                Crear
+
+            </button>
+
+
+        </form>
+
+
+    </section>
+
+
+</main>
+
+
+<script>
+
+
+/* =========================================
+   CREAR MATERIA
+========================================= */
+
+document
+.getElementById("formulario")
+.addEventListener(
+    "submit",
+    function(e) {
+
+
+        e.preventDefault();
+
+
+        /* =========================
+           OBTENER DATOS
+        ========================== */
+
+        const materia =
+            document
+            .getElementById("materia")
+            .value
+            .trim();
+
+
+        const profesor =
+            document
+            .getElementById("profesor")
+            .value
+            .trim();
+
+
+        const codigo =
+            document
+            .getElementById("codigo")
+            .value
+            .trim();
+
+
+        /* =========================
+           COMPROBAR CAMPOS
+        ========================== */
+
+        if (
+            materia === "" ||
+            profesor === "" ||
+            codigo === ""
+        ) {
+
+            alert(
+                "Complete todos los campos."
+            );
+
+            return;
+
+        }
+
+
+        /* =========================
+           OBTENER MATERIAS TEMPORALES
+        ========================== */
+
+        const materias =
+            JSON.parse(
+                sessionStorage.getItem(
+                    "educonnect_materias_temporales"
+                )
+            ) || [];
+
+
+        /* =========================
+           COMPROBAR CÓDIGO REPETIDO
+        ========================== */
+
+        const existe =
+            materias.some(
+                function(item) {
+
+                    return (
+                        item.codigo.toLowerCase() ===
+                        codigo.toLowerCase()
+                    );
+
+                }
+            );
+
+
+        if (existe) {
+
+            alert(
+                "Ya existe una materia con ese código."
+            );
+
+            return;
+
+        }
+
+
+        /* =========================
+           CREAR OBJETO
+        ========================== */
+
+        const nuevaMateria = {
+
+            nombre: materia,
+
+            profesor: profesor,
+
+            codigo: codigo
+
+        };
+
+
+        /* =========================
+           GUARDAR TEMPORALMENTE
+        ========================== */
+
+        materias.push(
+            nuevaMateria
+        );
+
+
+        sessionStorage.setItem(
+            "educonnect_materias_temporales",
+            JSON.stringify(materias)
+        );
+
+
+        /* =========================
+           CONFIRMACIÓN
+        ========================== */
+
+        alert(
+            "Materia creada correctamente."
+        );
+
+
+        /* =========================
+           VOLVER AL MENÚ
+        ========================== */
+
+        window.location.href =
+            "5_seccion.html";
+
+
+    }
+);
+
+
+</script>
+
+
+</body>
+
+</html>

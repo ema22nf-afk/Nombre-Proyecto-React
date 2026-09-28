@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chat - María Sánchez</title>
+    <link rel="stylesheet" href="94_seccion.css">
+</head>
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="62_seccion.html" class="boton-volver">←</a>
+        <h1>Chat</h1>
+    </header>
+
+    <div class="info-estudiante">
+        <div class="avatar">👩‍🎓</div>
+        <div>
+            <h2>María Sánchez</h2>
+            <p>11° · Tecnología</p>
+        </div>
+    </div>
+
+    <main class="chat" id="chat">
+
+        <div class="mensaje estudiante">
+            <p>Hola profesor, tengo una pregunta sobre la actividad.</p>
+            <span>11:45 a. m.</span>
+        </div>
+
+        <div class="mensaje profesor">
+            <p>Hola, María. Claro, dime cuál es tu pregunta.</p>
+            <span>11:47 a. m.</span>
+        </div>
+
+        <div class="mensaje estudiante">
+            <p>¿Podemos utilizar ejemplos de tecnologías que usamos diariamente?</p>
+            <span>11:49 a. m.</span>
+        </div>
+
+        <div class="mensaje profesor">
+            <p>Sí, María. Puedes utilizar ejemplos de tecnologías de uso cotidiano y explicar cómo funcionan.</p>
+            <span>11:51 a. m.</span>
+        </div>
+
+    </main>
+
+    <div class="zona-escribir">
+        <input
+            type="text"
+            id="mensajeInput"
+            placeholder="Escribe un mensaje..."
+        >
+        <button onclick="enviarMensaje()">➤</button>
+    </div>
+
+</div>
+
+<script>
+function enviarMensaje() {
+
+    const input = document.getElementById("mensajeInput");
+    const texto = input.value.trim();
+
+    if (texto === "") {
+        return;
+    }
+
+    const chat = document.getElementById("chat");
+
+    const mensaje = document.createElement("div");
+    mensaje.className = "mensaje profesor";
+
+    const hora = new Date().toLocaleTimeString("es-CO", {
+        hour: "numeric",
+        minute: "2-digit"
+    });
+
+    mensaje.innerHTML = `
+        <p></p>
+        <span>${hora}</span>
+    `;
+
+    mensaje.querySelector("p").textContent = texto;
+
+    chat.appendChild(mensaje);
+
+    input.value = "";
+    chat.scrollTop = chat.scrollHeight;
+}
+
+document.getElementById("mensajeInput").addEventListener("keydown", function(event) {
+    if (event.key === "Enter") {
+        enviarMensaje();
+    }
+});
+</script>
+
+</body>
+</html>

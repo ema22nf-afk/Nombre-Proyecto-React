@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calificaciones - María Sánchez</title>
+
+    <link rel="stylesheet" href="130_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="109_seccion.html" class="boton-volver">←</a>
+        <h1>Calificaciones</h1>
+    </header>
+
+    <main class="contenido">
+
+        <div class="perfil">
+
+            <div class="avatar">👩‍🎨</div>
+
+            <div>
+                <h2>María Sánchez</h2>
+                <p>11° · Artística</p>
+            </div>
+
+        </div>
+
+        <div class="promedio">
+            <span>Promedio</span>
+            <strong id="promedio">4.6</strong>
+        </div>
+
+        <h3>Actividades</h3>
+
+        <div class="actividad">
+
+            <div>
+                <strong>Actividad 1</strong>
+                <p>Ejercicio de dibujo</p>
+            </div>
+
+            <span class="nota">4.5</span>
+
+        </div>
+
+        <div class="actividad pendiente">
+
+            <div>
+                <strong>Actividad 2</strong>
+                <p>Proyecto artístico</p>
+            </div>
+
+            <div class="estado">
+
+                <span id="estado2">Pendiente</span>
+
+                <a href="131_seccion.html" id="botonCalificar">
+                    Calificar
+                </a>
+
+            </div>
+
+        </div>
+
+        <div
+            id="comentarioContainer"
+            class="comentario-container"
+            style="display: none;"
+        >
+
+            <strong>Comentario del profesor:</strong>
+
+            <p id="comentario"></p>
+
+        </div>
+
+        <div class="actividad">
+
+            <div>
+                <strong>Actividad 3</strong>
+                <p>Composición artística</p>
+            </div>
+
+            <span class="nota">4.7</span>
+
+        </div>
+
+    </main>
+
+</div>
+
+<script>
+
+const notaGuardada =
+    localStorage.getItem("calificacion_maria_sanchez_actividad2");
+
+const comentarioGuardado =
+    localStorage.getItem("comentario_maria_sanchez_actividad2");
+
+if (notaGuardada !== null) {
+
+    const nota = parseFloat(notaGuardada);
+
+    document.getElementById("estado2").textContent =
+        "✓ Calificada";
+
+    document.getElementById("estado2")
+        .classList.add("calificada");
+
+    document.getElementById("botonCalificar")
+        .style.display = "none";
+
+    if (comentarioGuardado) {
+
+        document.getElementById("comentario").textContent =
+            comentarioGuardado;
+
+        document.getElementById("comentarioContainer")
+            .style.display = "block";
+    }
+
+    const promedio = (4.5 + nota + 4.7) / 3;
+
+    document.getElementById("promedio").textContent =
+        promedio.toFixed(1);
+}
+
+</script>
+
+</body>
+
+</html>

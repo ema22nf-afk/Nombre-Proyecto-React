@@ -1,0 +1,278 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #172234, #3b78b8);
+
+    min-height: 100vh;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.telefono {
+    width: 380px;
+    height: 720px;
+
+    background: #fffef5;
+
+    border-radius: 45px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, .25);
+
+    display: flex;
+    flex-direction: column;
+}
+
+
+/* ENCABEZADO */
+
+header {
+    height: 85px;
+    min-height: 85px;
+
+    flex-shrink: 0;
+
+    background: #dcecff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    position: relative;
+}
+
+header h1 {
+    color: #202d3d;
+    font-size: 25px;
+}
+
+.btn-regresar {
+    position: absolute;
+
+    left: 20px;
+
+    text-decoration: none;
+
+    color: #202d3d;
+
+    font-size: 30px;
+
+    font-weight: bold;
+}
+
+
+/* PERFIL DEL ESTUDIANTE */
+
+.perfil-chat {
+    height: 75px;
+    min-height: 75px;
+
+    flex-shrink: 0;
+
+    background: white;
+
+    padding: 10px 18px;
+
+    display: flex;
+    align-items: center;
+
+    gap: 13px;
+
+    border-bottom: 1px solid #e1e6eb;
+
+    box-shadow: 0 2px 7px rgba(0, 0, 0, .06);
+}
+
+.avatar {
+    width: 52px;
+    height: 52px;
+
+    border-radius: 50%;
+
+    background: #e8f2ff;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    font-size: 28px;
+}
+
+.perfil-chat h2 {
+    color: #202d3d;
+
+    font-size: 18px;
+
+    margin-bottom: 4px;
+}
+
+.perfil-chat p {
+    color: #66788a;
+
+    font-size: 13px;
+}
+
+
+/* CHAT */
+
+.chat {
+    flex: 1;
+
+    min-height: 0;
+
+    overflow-y: auto;
+
+    padding: 18px 15px;
+
+    display: flex;
+    flex-direction: column;
+
+    gap: 12px;
+}
+
+
+/* MENSAJES */
+
+.mensaje {
+    max-width: 78%;
+
+    padding: 11px 13px;
+
+    border-radius: 15px;
+
+    font-size: 13px;
+
+    line-height: 1.4;
+
+    word-wrap: break-word;
+}
+
+.mensaje p {
+    margin-bottom: 5px;
+}
+
+.mensaje span {
+    display: block;
+
+    font-size: 10px;
+
+    text-align: right;
+
+    opacity: .65;
+}
+
+
+/* MENSAJE DEL ESTUDIANTE */
+
+.estudiante {
+    align-self: flex-start;
+
+    background: #dcecff;
+
+    color: #202d3d;
+
+    border-bottom-left-radius: 4px;
+}
+
+
+/* MENSAJE DEL PROFESOR */
+
+.profesor {
+    align-self: flex-end;
+
+    background: #3b78b8;
+
+    color: white;
+
+    border-bottom-right-radius: 4px;
+}
+
+
+/* CAJA PARA ESCRIBIR */
+
+.zona-escribir {
+    min-height: 65px;
+
+    flex-shrink: 0;
+
+    background: white;
+
+    border-top: 1px solid #e1e6eb;
+
+    padding: 10px 13px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 8px;
+}
+
+.zona-escribir input {
+    flex: 1;
+
+    border: 1px solid #ccd8e4;
+
+    border-radius: 22px;
+
+    padding: 11px 15px;
+
+    font-size: 13px;
+
+    outline: none;
+
+    background: #f8fafc;
+}
+
+.zona-escribir input:focus {
+    border-color: #3b78b8;
+}
+
+
+/* BOTÓN ENVIAR */
+
+.zona-escribir button {
+    width: 42px;
+    height: 42px;
+
+    border: none;
+
+    border-radius: 50%;
+
+    background: #3b78b8;
+
+    color: white;
+
+    font-size: 18px;
+
+    cursor: pointer;
+}
+
+.zona-escribir button:hover {
+    background: #28649e;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 450px) {
+
+    body {
+        align-items: stretch;
+    }
+
+    .telefono {
+        width: 100%;
+        height: 100vh;
+
+        border-radius: 0;
+    }
+}

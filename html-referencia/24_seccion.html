@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Caída libre</title>
+
+    <link rel="stylesheet" href="24_seccion.css">
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <!-- ENCABEZADO -->
+    <header class="header">
+
+        <!-- Volver -->
+        <a class="boton" href="21_seccion.html">
+            <i class="fa-solid fa-arrow-left"></i>
+        </a>
+
+        <h1>Tareas</h1>
+
+        <!-- Inicio -->
+        <a class="boton" href="5_seccion.html">
+            <i class="fa-solid fa-house"></i>
+        </a>
+
+    </header>
+
+
+    <!-- CONTENIDO -->
+    <main class="contenido">
+
+        <h2>Caída libre</h2>
+
+        <p class="fecha">
+            Fecha límite: 30/03/2026
+        </p>
+
+        <!-- ICONO DE FÍSICA -->
+        <div class="imagen">
+            <i class="fa-solid fa-atom"></i>
+        </div>
+
+        <!-- DESCRIPCIÓN -->
+        <div class="descripcion">
+
+            Realiza los ejercicios sobre caída libre aplicando las fórmulas
+            estudiadas en clase. Debes mostrar todo el procedimiento y
+            entregar la actividad antes de la fecha límite.
+
+        </div>
+
+
+        <!-- BOTONES -->
+        <div class="botones">
+
+            <!-- ENTREGAR -->
+            <a class="aceptar" href="25_seccion.html"
+               onclick="return confirmarEntrega()">
+                <i class="fa-solid fa-check"></i>
+            </a>
+
+            <!-- CANCELAR -->
+            <a class="cancelar" href="26_seccion.html"
+               onclick="return confirmarCancelacion()">
+                <i class="fa-solid fa-xmark"></i>
+            </a>
+
+        </div>
+
+    </main>
+
+</div>
+
+
+<script>
+
+function confirmarEntrega(){
+
+    return confirm(
+        "¿Deseas marcar esta tarea como completada?"
+    );
+
+}
+
+function confirmarCancelacion(){
+
+    return confirm(
+        "¿Deseas marcar esta tarea como no realizada?"
+    );
+
+}
+
+</script>
+
+</body>
+</html>

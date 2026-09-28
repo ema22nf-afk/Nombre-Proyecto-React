@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Calificar - Valentina Torres</title>
+
+    <link rel="stylesheet" href="116_seccion.css">
+</head>
+
+<body>
+
+<div class="telefono">
+
+    <header>
+        <a href="115_seccion.html" class="boton-volver">←</a>
+        <h1>Calificar actividad</h1>
+    </header>
+
+    <div class="perfil">
+
+        <div class="avatar">👩‍🎨</div>
+
+        <div>
+            <h2>Valentina Torres</h2>
+            <p>10° · Artística</p>
+        </div>
+
+    </div>
+
+    <main class="contenido">
+
+        <div class="actividad-info">
+
+            <h2>Actividad 2</h2>
+
+            <p>
+                <strong>Proyecto artístico</strong>
+            </p>
+
+            <p class="descripcion">
+                Revisión del proyecto artístico realizado por la estudiante.
+            </p>
+
+        </div>
+
+        <div class="archivo">
+
+            <span class="icono">📎</span>
+
+            <div>
+                <strong>Proyecto_artistico.pdf</strong>
+                <p>Archivo entregado por la estudiante</p>
+            </div>
+
+        </div>
+
+        <form id="formCalificar">
+
+            <label for="nota">
+                Calificación
+            </label>
+
+            <input
+                type="number"
+                id="nota"
+                min="0"
+                max="5"
+                step="0.1"
+                placeholder="Ej: 4.5"
+                required
+            >
+
+            <label for="comentario">
+                Comentario
+            </label>
+
+            <textarea
+                id="comentario"
+                placeholder="Escribe un comentario sobre el trabajo..."
+                required
+            ></textarea>
+
+            <button type="submit">
+                Guardar calificación
+            </button>
+
+        </form>
+
+        <p id="mensajeExito" class="exito"></p>
+
+    </main>
+
+</div>
+
+<script>
+document.getElementById("formCalificar").addEventListener("submit", function(event) {
+
+    event.preventDefault();
+
+    const nota = parseFloat(
+        document.getElementById("nota").value
+    );
+
+    const comentario = document
+        .getElementById("comentario")
+        .value
+        .trim();
+
+    if (nota < 0 || nota > 5) {
+        alert("La calificación debe estar entre 0 y 5.");
+        return;
+    }
+
+    if (comentario === "") {
+        alert("Debes escribir un comentario.");
+        return;
+    }
+
+    localStorage.setItem(
+        "calificacion_valentina_actividad2",
+        nota
+    );
+
+    localStorage.setItem(
+        "comentario_valentina_actividad2",
+        comentario
+    );
+
+    document.getElementById("mensajeExito").textContent =
+        "✓ Calificación guardada correctamente.";
+
+    setTimeout(function() {
+        window.location.href = "115_seccion.html";
+    }, 1000);
+
+});
+</script>
+
+</body>
+
+</html>

@@ -1,0 +1,490 @@
+/* =========================================
+   CONFIGURACIÓN GENERAL
+========================================= */
+
+* {
+
+    margin: 0;
+
+    padding: 0;
+
+    box-sizing: border-box;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
+}
+
+
+/* =========================================
+   FONDO
+========================================= */
+
+body {
+
+    min-height: 100vh;
+
+    background:
+        linear-gradient(
+            135deg,
+            #172234,
+            #3b78b8
+        );
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    padding: 20px;
+
+}
+
+
+/* =========================================
+   TELÉFONO
+========================================= */
+
+.telefono {
+
+    width: 380px;
+
+    height: 720px;
+
+    background: #fffef5;
+
+    border-radius: 45px;
+
+    overflow: hidden;
+
+    box-shadow:
+        0 10px 30px
+        rgba(
+            0,
+            0,
+            0,
+            0.25
+        );
+
+    display: flex;
+
+    flex-direction: column;
+
+}
+
+
+/* =========================================
+   ENCABEZADO
+========================================= */
+
+.header {
+
+    width: 100%;
+
+    height: 85px;
+
+    background: #dcecff;
+
+    padding:
+        18px 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+}
+
+
+.header h1 {
+
+    flex: 1;
+
+    text-align: center;
+
+    font-size: 26px;
+
+    color: #202d3d;
+
+    font-weight: bold;
+
+    padding: 0 8px;
+
+}
+
+
+/* =========================================
+   BOTONES HEADER
+========================================= */
+
+.btn-header {
+
+    width: 42px;
+
+    height: 42px;
+
+    flex-shrink: 0;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    background: #55b8ff;
+
+    color: #0b3475;
+
+    border-radius: 10px;
+
+    text-decoration: none;
+
+    font-size: 20px;
+
+    transition: 0.2s;
+
+}
+
+
+.btn-header:hover {
+
+    background: #2196f3;
+
+    color: white;
+
+    transform:
+        scale(1.05);
+
+}
+
+
+.btn-header:active {
+
+    transform:
+        scale(0.95);
+
+}
+
+
+/* =========================================
+   CONTENIDO
+========================================= */
+
+.contenido {
+
+    flex: 1;
+
+    padding:
+        25px 20px;
+
+    overflow-y: auto;
+
+}
+
+
+.contenido::-webkit-scrollbar {
+
+    width: 0;
+
+}
+
+
+/* =========================================
+   MATERIA
+========================================= */
+
+.contenido > h2 {
+
+    font-size: 30px;
+
+    color: #202d3d;
+
+    margin-bottom: 18px;
+
+}
+
+
+/* =========================================
+   PROMEDIO
+========================================= */
+
+.promedio {
+
+    width: 100%;
+
+    background: #bfeeff;
+
+    border:
+        2px solid #59c8ff;
+
+    border-radius: 12px;
+
+    padding: 15px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    margin-bottom: 20px;
+
+}
+
+
+.promedio p {
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+    color: #202d3d;
+
+}
+
+
+.promedio span {
+
+    width: 60px;
+
+    height: 60px;
+
+    background: white;
+
+    border-radius: 50%;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #2196f3;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   LISTA
+========================================= */
+
+.lista {
+
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 12px;
+
+}
+
+
+/* =========================================
+   CALIFICACIÓN
+========================================= */
+
+.calificacion {
+
+    min-height: 70px;
+
+    background: white;
+
+    border:
+        2px solid #ddd;
+
+    border-radius: 10px;
+
+    padding:
+        10px 12px;
+
+    display: flex;
+
+    align-items: center;
+
+    justify-content: space-between;
+
+    box-shadow:
+        0 2px 5px
+        rgba(
+            0,
+            0,
+            0,
+            0.05
+        );
+
+}
+
+
+/* =========================================
+   INFORMACIÓN
+========================================= */
+
+.informacion {
+
+    flex: 1;
+
+}
+
+
+.informacion h3 {
+
+    font-size: 17px;
+
+    color: #202d3d;
+
+    margin-bottom: 5px;
+
+}
+
+
+.informacion p {
+
+    font-size: 14px;
+
+    color: #777;
+
+}
+
+
+/* =========================================
+   NOTA
+========================================= */
+
+.nota {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 10px;
+
+    background: #bfeeff;
+
+    border:
+        2px solid #59c8ff;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #176bb1;
+
+    font-size: 20px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   PENDIENTE
+========================================= */
+
+.pendiente {
+
+    width: 55px;
+
+    height: 55px;
+
+    border-radius: 10px;
+
+    background: #eeeeee;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    color: #888;
+
+    font-size: 24px;
+
+    font-weight: bold;
+
+}
+
+
+/* =========================================
+   MENSAJE INFORMATIVO
+========================================= */
+
+.mensaje {
+
+    margin-top: 20px;
+
+    padding: 12px;
+
+    background: #eef7ff;
+
+    border:
+        1px solid #b9def8;
+
+    border-radius: 10px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    color: #52718c;
+
+    font-size: 13px;
+
+    line-height: 18px;
+
+}
+
+
+.mensaje i {
+
+    color: #2196f3;
+
+    font-size: 18px;
+
+}
+
+
+/* =========================================
+   RESPONSIVE
+========================================= */
+
+@media (max-width: 450px) {
+
+    body {
+
+        padding: 0;
+
+    }
+
+
+    .telefono {
+
+        width: 100%;
+
+        height: 100vh;
+
+        border-radius: 0;
+
+    }
+
+
+    .contenido {
+
+        padding:
+            22px 15px;
+
+    }
+
+}

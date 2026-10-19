@@ -1,122 +1,178 @@
-import { useState } from 'react'
-import heroImg from './assets/hero.png'
-import reactLogo from './assets/react.svg'
-import viteLogo from './assets/vite.svg'
-import './App.css'
+import React from "react";
+import { EduConnectProvider, useEduConnect } from "./context";
+import { PhoneFrame } from "./components/common/PhoneFrame";
+import { QuickNav } from "./components/common/QuickNav";
 
-function App() {
-  const [count, setCount] = useState(0)
+// Auth
+import { WelcomeScreen } from "./components/auth/WelcomeScreen";
+import { LoginScreen } from "./components/auth/LoginScreen";
+import { RegisterScreen } from "./components/auth/RegisterScreen";
+import { ForgotPasswordScreen } from "./components/auth/ForgotPasswordScreen";
+
+// Student
+import { StudentDashboard } from "./components/student/StudentDashboard";
+import { StudentProfile } from "./components/student/StudentProfile";
+import { StudentNotifications } from "./components/student/StudentNotifications";
+import { AddSubjectStudent } from "./components/student/AddSubjectStudent";
+import { SubjectCover } from "./components/student/SubjectCover";
+import { SubjectOptionsMenu } from "./components/student/SubjectOptionsMenu";
+import { SubjectGrades } from "./components/student/SubjectGrades";
+import { SubjectTasks } from "./components/student/SubjectTasks";
+import { TaskDetail } from "./components/student/TaskDetail";
+import { AddTaskModal } from "./components/student/AddTaskModal";
+import { SubjectChat } from "./components/student/SubjectChat";
+
+// Teacher
+import { TeacherDashboard } from "./components/teacher/TeacherDashboard";
+import { TeacherProfile } from "./components/teacher/TeacherProfile";
+import { TeacherNotifications } from "./components/teacher/TeacherNotifications";
+import { TeacherAddSubject } from "./components/teacher/TeacherAddSubject";
+import { TeacherSubjectGrades } from "./components/teacher/TeacherSubjectGrades";
+import { TeacherStudentList } from "./components/teacher/TeacherStudentList";
+import { TeacherStudentDetail } from "./components/teacher/TeacherStudentDetail";
+import { TeacherStudentChat } from "./components/teacher/TeacherStudentChat";
+import { TeacherStudentGrades } from "./components/teacher/TeacherStudentGrades";
+import { TeacherGradeActivity } from "./components/teacher/TeacherGradeActivity";
+
+import "./styles/educonnect.css";
+
+const ScreenRouter = () => {
+  const { currentView } = useEduConnect();
+  const { screen, params } = currentView;
+
+  switch (screen) {
+    case "welcome":
+      return <WelcomeScreen />;
+    case "login":
+      return <LoginScreen />;
+    case "register":
+      return <RegisterScreen />;
+    case "forgot-password":
+      return <ForgotPasswordScreen />;
+
+    // Student Views
+    case "student-dashboard":
+      return <StudentDashboard />;
+    case "student-profile":
+      return <StudentProfile />;
+    case "student-notifications":
+      return <StudentNotifications />;
+    case "student-add-subject":
+      return <AddSubjectStudent />;
+    case "subject-cover":
+      return <SubjectCover subjectId={params.subjectId} />;
+    case "subject-options":
+      return <SubjectOptionsMenu subjectId={params.subjectId} />;
+    case "subject-grades":
+      return <SubjectGrades subjectId={params.subjectId} />;
+    case "subject-tasks":
+      return <SubjectTasks subjectId={params.subjectId} />;
+    case "task-detail":
+      return (
+        <TaskDetail
+          subjectId={params.subjectId}
+          taskId={params.taskId}
+        />
+      );
+    case "add-task":
+      return <AddTaskModal subjectId={params.subjectId} />;
+    case "subject-chat":
+      return <SubjectChat subjectId={params.subjectId} />;
+
+    // Teacher Views
+    case "teacher-dashboard":
+      return <TeacherDashboard />;
+    case "teacher-profile":
+      return <TeacherProfile />;
+    case "teacher-notifications":
+      return <TeacherNotifications />;
+    case "teacher-add-subject":
+      return <TeacherAddSubject />;
+    case "teacher-subject-grades":
+      return <TeacherSubjectGrades subjectId={params.subjectId} />;
+    case "teacher-student-list":
+      return (
+        <TeacherStudentList
+          subjectId={params.subjectId}
+          subjectName={params.subjectName}
+          grade={params.grade}
+        />
+      );
+    case "teacher-student-detail":
+      return (
+        <TeacherStudentDetail
+          studentId={params.studentId}
+          studentName={params.studentName}
+          subjectId={params.subjectId}
+          subjectName={params.subjectName}
+          grade={params.grade}
+          gradeKey={params.gradeKey}
+        />
+      );
+    case "teacher-student-chat":
+      return (
+        <TeacherStudentChat
+          studentId={params.studentId}
+          studentName={params.studentName}
+          subjectId={params.subjectId}
+          subjectName={params.subjectName}
+          grade={params.grade}
+          gradeKey={params.gradeKey}
+        />
+      );
+    case "teacher-student-grades":
+      return (
+        <TeacherStudentGrades
+          studentId={params.studentId}
+          studentName={params.studentName}
+          subjectId={params.subjectId}
+          subjectName={params.subjectName}
+          grade={params.grade}
+          gradeKey={params.gradeKey}
+        />
+      );
+    case "teacher-grade-activity":
+      return (
+        <TeacherGradeActivity
+          studentId={params.studentId}
+          studentName={params.studentName}
+          subjectId={params.subjectId}
+          subjectName={params.subjectName}
+          grade={params.grade}
+          gradeKey={params.gradeKey}
+          activityId={params.activityId}
+          activityTitle={params.activityTitle}
+          activitySubtitle={params.activitySubtitle}
+          activityDesc={params.activityDesc}
+          activityFile={params.activityFile}
+        />
+      );
+
+    default:
+      return <WelcomeScreen />;
+  }
+};
+
+const AppContent = () => {
+  const { currentView } = useEduConnect();
+  const isCream =
+    currentView.screen === "welcome" ||
+    currentView.screen.includes("chat");
 
   return (
-    <>
-      <section id="center">
-        <div className="hero">
-          <img src={heroImg} className="base" width="170" height="179" alt="" />
-          <img src={reactLogo} className="framework" alt="React logo" />
-          <img src={viteLogo} className="vite" alt="Vite logo" />
-        </div>
-        <div>
-          <h1>Get started</h1>
-          <p>
-            Edit <code>src/App.jsx</code> and save to test <code>HMR</code>
-          </p>
-        </div>
-        <button
-          type="button"
-          className="counter"
-          onClick={() => setCount((count) => count + 1)}
-        >
-          Count is {count}
-        </button>
-      </section>
+    <div className="phone-wrapper">
+      <QuickNav />
+      <PhoneFrame isCream={isCream}>
+        <ScreenRouter />
+      </PhoneFrame>
+    </div>
+  );
+};
 
-      <div className="ticks"></div>
-
-      <section id="next-steps">
-        <div id="docs">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#documentation-icon"></use>
-          </svg>
-          <h2>Documentation</h2>
-          <p>Your questions, answered</p>
-          <ul>
-            <li>
-              <a href="https://vite.dev/" target="_blank">
-                <img className="logo" src={viteLogo} alt="" />
-                Explore Vite
-              </a>
-            </li>
-            <li>
-              <a href="https://react.dev/" target="_blank">
-                <img className="button-icon" src={reactLogo} alt="" />
-                Learn more
-              </a>
-            </li>
-          </ul>
-        </div>
-        <div id="social">
-          <svg className="icon" role="presentation" aria-hidden="true">
-            <use href="/icons.svg#social-icon"></use>
-          </svg>
-          <h2>Connect with us</h2>
-          <p>Join the Vite community</p>
-          <ul>
-            <li>
-              <a href="https://github.com/vitejs/vite" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#github-icon"></use>
-                </svg>
-                GitHub
-              </a>
-            </li>
-            <li>
-              <a href="https://chat.vite.dev/" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#discord-icon"></use>
-                </svg>
-                Discord
-              </a>
-            </li>
-            <li>
-              <a href="https://x.com/vite_js" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#x-icon"></use>
-                </svg>
-                X.com
-              </a>
-            </li>
-            <li>
-              <a href="https://bsky.app/profile/vite.dev" target="_blank">
-                <svg
-                  className="button-icon"
-                  role="presentation"
-                  aria-hidden="true"
-                >
-                  <use href="/icons.svg#bluesky-icon"></use>
-                </svg>
-                Bluesky
-              </a>
-            </li>
-          </ul>
-        </div>
-      </section>
-
-      <div className="ticks"></div>
-      <section id="spacer"></section>
-    </>
-  )
+export default function App() {
+  return (
+    <EduConnectProvider>
+      <AppContent />
+    </EduConnectProvider>
+  );
 }
-
-export default App
